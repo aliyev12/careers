@@ -1,0 +1,20 @@
+{
+  "jobs": "ジョブ",
+  "en": {
+    "native": "English",
+    "localized": "英語"
+  },
+  "es": {
+    "native": "Español",
+    "localized": "スペイン語"
+  },
+  "ja": {
+    "native": "日本",
+    "localized": "日本"
+  },
+  "nav_links": {
+    "home": "ホーム",
+    "about": "について",
+    "contact": "お問い合わせ"
+  }
+}
