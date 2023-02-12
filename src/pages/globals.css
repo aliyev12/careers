@@ -2,23 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root { } */
+@layer base {
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    @apply text-gray-800 dark:text-white;
+  }
+
+  h5 {
+    @apply text-xl font-semibold dark:text-white;
+  }
+
+  h6 {
+    @apply text-lg font-medium dark:text-white;
+  }
 }
-/* --montserrat-font */
-/* html {
-  font-family: var(--montserrat-font);
-  @apply text-gray-700 text-base;
-} */
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+@layer components {
+  .link {
+    @apply font-medium text-blue-600 hover:underline dark:text-blue-500;
+  }
+}
+
+.ReactCollapse--collapse {
+  transition: height 500ms;
 }
 
 /* h1 {

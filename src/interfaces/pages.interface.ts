@@ -3,7 +3,7 @@ export enum ELocale {
   es = "es",
 }
 
-export interface IJobAttributes {
+export interface IJobCMSAttributes {
   title: string;
   createdAt: string;
   updatedAt: string;
@@ -11,7 +11,7 @@ export interface IJobAttributes {
   locale: ELocale;
 }
 
-export interface IJob {
+export interface IJobCMS {
   id: number;
-  attributes: IJobAttributes;
+  attributes: IJobCMSAttributes;
 }

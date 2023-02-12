@@ -1,17 +1,25 @@
-"use client";
+import { IGlobalContextState, IGlobalContextValue } from "@/interfaces";
+import { createContext, FC, PropsWithChildren, useState } from "react";
 
-import { EMode, IGlobalContextState, IGlobalContextValue } from "@/interfaces";
-import React, { createContext, FC, PropsWithChildren, useState } from "react";
-
-const defaultValue = {
-  state: { mode: EMode.dark },
+const defaultValue: IGlobalContextValue = {
+  state: {
+    jobsState: {
+      isNotInitializes: true,
+      jobs: [],
+    },
+  },
   setState: () => {},
 };
 
 export const GlobalContext = createContext<IGlobalContextValue>(defaultValue);
 
 export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [state, setState] = useState<IGlobalContextState>({ mode: EMode.dark });
+  const [state, setState] = useState<IGlobalContextState>({
+    jobsState: {
+      isNotInitializes: true,
+      jobs: [],
+    },
+  });
 
   const value = {
     state,

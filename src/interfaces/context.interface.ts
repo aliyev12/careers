@@ -1,10 +1,15 @@
+import { IJob } from "./cms.interface";
+
 export enum EMode {
   dark = "dark",
   light = "light",
 }
 
 export interface IGlobalContextState {
-  mode: EMode;
+  jobsState: {
+    isNotInitializes: boolean;
+    jobs: IJob[];
+  };
 }
 
 export interface IGlobalContextValue {

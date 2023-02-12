@@ -16,5 +16,11 @@
     "home": "Home",
     "about": "About",
     "contact": "Contact"
+  },
+  "remoteWorks": {
+    "fully": "Fully Remote"
+  },
+  "jobLocations": {
+    "various": "Various locations within"
   }
 }

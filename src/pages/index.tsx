@@ -7,42 +7,39 @@ import {
   InferGetStaticPropsType,
 } from "next";
 import { useRouter } from "next/router";
-import { IJob } from "@/interfaces";
+import { IJob, IJobsRes } from "@/interfaces";
 import Link from "next/link";
+import { useJobs } from "@/hooks";
+import { useEffect } from "react";
+import { JobsList } from "@/components";
+import { formatJobs } from "@/utils";
 
 export default function Home({
-  jobs,
+  data,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { initJobsState, jobsInitialized } = useJobs(formatJobs(data));
   const { t } = useTranslation("common");
 
-  return (
-    <div>
-      {/* <Head>
-        <title>Careers</title>
-        <meta name="description" content="Careers app" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head> */}
-      {/* {jobs.length > 0 &&
-        jobs.map((job) => {
-          return <div key={`recipe-${job.id}`}>{job.attributes.title}</div>;
-        })} */}
-      <h1>test</h1>
-    </div>
-  );
+  useEffect(() => {
+    if (data && !jobsInitialized) {
+      initJobsState();
+    }
+  }, []);
+
+  return <div className="w-full">{jobsInitialized && <JobsList />}</div>;
 }
 
-export const getStaticProps: GetStaticProps<{ jobs: IJob[] }> = async ({
+export const getStaticProps: GetStaticProps<{ data: IJobsRes }> = async ({
   locale,
 }) => {
   // export async function getServerSideProps({ locale }) {
-  const url = `${process.env.CMS_ORIGIN}${process.env.CMS_JOBS_PATH}?locale=${locale}`;
+  const url = `${process.env.CMS_ORIGIN}${process.env.CMS_JOBS_PATH}&locale=${locale}`;
   const res: Response = await fetch(url);
-  const data: { data: IJob[] } = await res.json();
+  const data: IJobsRes = await res.json();
 
   return {
     props: {
-      jobs: data.data,
+      data,
       ...(await serverSideTranslations(locale!, ["common"])),
       // Will be passed to the page component as props
     },

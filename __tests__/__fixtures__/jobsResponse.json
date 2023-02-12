@@ -1,0 +1,321 @@
+{
+  "data": [
+    {
+      "id": 4,
+      "attributes": {
+        "title": "Full Stack Developer",
+        "createdAt": "2023-02-10T02:36:14.947Z",
+        "updatedAt": "2023-02-10T17:13:31.127Z",
+        "publishedAt": "2023-02-10T15:46:57.398Z",
+        "locale": "en",
+        "code": "HACOWXH",
+        "status": "active",
+        "slug": "full-stack-developer",
+        "summary": "test **summary** ",
+        "description": "do **everything** ",
+        "aboutTeam": "something **about** the team",
+        "qualifications": "some **quals**",
+        "company": {
+          "data": {
+            "id": 1,
+            "attributes": {
+              "name": "Dream Coders, LLC",
+              "createdAt": "2023-02-10T14:30:13.190Z",
+              "updatedAt": "2023-02-10T16:28:40.745Z",
+              "publishedAt": "2023-02-10T14:35:50.073Z",
+              "locale": "en",
+              "about": "Really **Awesome** <u>Company</u> ...",
+              "code": "ABC-en",
+              "department": "Website Modernization Group",
+              "address": {
+                "id": 1,
+                "city": "Springfield",
+                "state": "VA",
+                "country": "USA"
+              },
+              "companyContact": {
+                "id": 1,
+                "name": "Jane Doe",
+                "email": "jane.doe@dreamcoders.com",
+                "phone": {
+                  "id": 1,
+                  "countryCode": 1,
+                  "phoneWithArea": 7031234567
+                }
+              },
+              "divisions": [
+                { "id": 6, "value": "IT Department" },
+                { "id": 7, "value": "Website Modernization Group" }
+              ],
+              "localizations": {
+                "data": [
+                  {
+                    "id": 3,
+                    "attributes": {
+                      "name": "Dream Coders, LLC",
+                      "createdAt": "2023-02-10T15:52:38.731Z",
+                      "updatedAt": "2023-02-10T16:28:59.068Z",
+                      "publishedAt": "2023-02-10T15:52:41.311Z",
+                      "locale": "ja",
+                      "about": "in japanese...  **Awesome** <u>Company</u> ...",
+                      "code": "ABC-ja"
+                    }
+                  },
+                  {
+                    "id": 2,
+                    "attributes": {
+                      "name": "Dream Coders, LLC",
+                      "createdAt": "2023-02-10T15:52:22.848Z",
+                      "updatedAt": "2023-02-10T16:28:48.677Z",
+                      "publishedAt": "2023-02-10T15:52:49.856Z",
+                      "locale": "es",
+                      "about": "en enpanol ....  **Awesome** <u>Company</u> ...",
+                      "code": "ABC-es"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "additionalSections": [
+          {
+            "id": 1,
+            "title": "Section one",
+            "body": "some desc of the _section_",
+            "weight": 0
+          },
+          {
+            "id": 2,
+            "title": "Section Two",
+            "body": "section 2 description ",
+            "weight": 1
+          }
+        ],
+        "skillTags": [
+          { "id": 1, "value": "javascript" },
+          { "id": 2, "value": "node" },
+          { "id": 3, "value": "react" },
+          { "id": 4, "value": "mongo" },
+          { "id": 9, "value": "css" }
+        ],
+        "socialMedia": [
+          {
+            "id": 1,
+            "name": "twitter",
+            "url": "https://twitter.com/tweeter?lang=en"
+          },
+          { "id": 2, "name": "facebook", "url": "https://www.facebook.com/" },
+          { "id": 3, "name": "linkedin", "url": "https://www.linkedin.com/" }
+        ],
+        "compensation": {
+          "id": 1,
+          "currency": "usd",
+          "frequency": "annual",
+          "setAmount": null,
+          "lowestAmount": 8000000,
+          "highestAmount": 12000000,
+          "amountType": "range"
+        },
+        "scheduleTypes": [
+          { "id": 1, "schedule": "full" },
+          { "id": 2, "schedule": "part" }
+        ],
+        "remoteWorks": [
+          { "id": 1, "remoteWorkOptions": "fully" },
+          { "id": 2, "remoteWorkOptions": "hybrid" }
+        ],
+        "localizations": {
+          "data": [
+            {
+              "id": 6,
+              "attributes": {
+                "title": "Full Stack Developer",
+                "createdAt": "2023-02-10T15:54:02.712Z",
+                "updatedAt": "2023-02-10T17:13:51.516Z",
+                "publishedAt": "2023-02-10T15:54:11.355Z",
+                "locale": "ja",
+                "code": "HACOWXH",
+                "slug": "full-stack-developer",
+                "summary": "japanese... test **summary** ",
+                "description": "do **everything** ",
+                "aboutTeam": "something **about** the team",
+                "qualifications": "some **quals**"
+              }
+            },
+            {
+              "id": 5,
+              "attributes": {
+                "title": "Full Stack Developer",
+                "createdAt": "2023-02-10T15:53:40.387Z",
+                "updatedAt": "2023-02-10T17:13:39.891Z",
+                "publishedAt": "2023-02-10T15:54:39.250Z",
+                "locale": "es",
+                "code": "HACOWXH",
+                "slug": "full-stack-developer",
+                "summary": "in spanish... test **summary** ",
+                "description": "do **everything** ",
+                "aboutTeam": "something **about** the team",
+                "qualifications": "some **quals**"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 7,
+      "attributes": {
+        "title": "Front-end Developer",
+        "createdAt": "2023-02-10T16:35:36.363Z",
+        "updatedAt": "2023-02-10T17:14:04.923Z",
+        "publishedAt": "2023-02-10T16:38:19.625Z",
+        "locale": "en",
+        "code": "AWMAPDG",
+        "status": "active",
+        "slug": "front-end-developer",
+        "summary": "sdasdavdfvdf",
+        "description": "acscsvabasdavd",
+        "aboutTeam": "b dsfvervcadawec",
+        "qualifications": "vqevqe",
+        "company": {
+          "data": {
+            "id": 4,
+            "attributes": {
+              "name": "Digital Universe",
+              "createdAt": "2023-02-10T16:37:21.150Z",
+              "updatedAt": "2023-02-10T16:37:59.001Z",
+              "publishedAt": "2023-02-10T16:37:21.983Z",
+              "locale": "en",
+              "about": "jmklm wjed woedoiw ediuw",
+              "code": "DU-en",
+              "department": "Website Management",
+              "address": {
+                "id": 4,
+                "city": "Fairfax",
+                "state": "VA",
+                "country": "USA"
+              },
+              "companyContact": {
+                "id": 4,
+                "name": "John Doe",
+                "email": "john.doe@digitaluniverse.com",
+                "phone": {
+                  "id": 4,
+                  "countryCode": 1,
+                  "phoneWithArea": 8003827540
+                }
+              },
+              "divisions": [
+                { "id": 28, "value": "Marketing" },
+                { "id": 29, "value": "Website Management" }
+              ],
+              "localizations": {
+                "data": [
+                  {
+                    "id": 6,
+                    "attributes": {
+                      "name": "Digital Universe (ja..)",
+                      "createdAt": "2023-02-10T16:37:58.977Z",
+                      "updatedAt": "2023-02-10T16:38:01.564Z",
+                      "publishedAt": "2023-02-10T16:38:01.561Z",
+                      "locale": "ja",
+                      "about": "jmklm wjed woedoiw ediuw",
+                      "code": "DU-ja"
+                    }
+                  },
+                  {
+                    "id": 5,
+                    "attributes": {
+                      "name": "Digital Universe (es..)",
+                      "createdAt": "2023-02-10T16:37:43.583Z",
+                      "updatedAt": "2023-02-10T16:37:59.001Z",
+                      "publishedAt": "2023-02-10T16:37:44.608Z",
+                      "locale": "es",
+                      "about": "jmklm wjed woedoiw ediuw",
+                      "code": "DU-es"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "additionalSections": [
+          {
+            "id": 7,
+            "title": "mksjdcksmkcs",
+            "body": "csjdcnjksndcjk",
+            "weight": 0
+          },
+          {
+            "id": 8,
+            "title": "ncnrwicmwec",
+            "body": "wioem wec wjk cjwec",
+            "weight": 1
+          }
+        ],
+        "skillTags": [
+          { "id": 24, "value": "angular" },
+          { "id": 25, "value": "html" },
+          { "id": 26, "value": "css" },
+          { "id": 27, "value": "figma" }
+        ],
+        "socialMedia": [
+          { "id": 10, "name": "facebook", "url": "https://facebook.com" },
+          { "id": 11, "name": "twitter", "url": "https://twitter.com" }
+        ],
+        "compensation": {
+          "id": 4,
+          "currency": "usd",
+          "frequency": "annual",
+          "setAmount": 9500000,
+          "lowestAmount": null,
+          "highestAmount": null,
+          "amountType": "set"
+        },
+        "scheduleTypes": [{ "id": 7, "schedule": "full" }],
+        "remoteWorks": [{ "id": 7, "remoteWorkOptions": "fully" }],
+        "localizations": {
+          "data": [
+            {
+              "id": 9,
+              "attributes": {
+                "title": "Front-end Developer",
+                "createdAt": "2023-02-10T16:38:49.092Z",
+                "updatedAt": "2023-02-10T17:14:21.468Z",
+                "publishedAt": "2023-02-10T16:38:51.581Z",
+                "locale": "ja",
+                "code": "AWMAPDG",
+                "slug": "front-end-developer",
+                "summary": "sdasdavdfvdf",
+                "description": "acscsvabasdavd",
+                "aboutTeam": "b dsfvervcadawec",
+                "qualifications": "vqevqe"
+              }
+            },
+            {
+              "id": 8,
+              "attributes": {
+                "title": "Front-end Developer",
+                "createdAt": "2023-02-10T16:38:27.946Z",
+                "updatedAt": "2023-02-10T17:14:14.222Z",
+                "publishedAt": "2023-02-10T16:38:37.246Z",
+                "locale": "es",
+                "code": "AWMAPDG",
+                "slug": "front-end-developer",
+                "summary": "sdasdavdfvdf",
+                "description": "acscsvabasdavd",
+                "aboutTeam": "b dsfvervcadawec",
+                "qualifications": "vqevqe"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "meta": {
+    "pagination": { "page": 1, "pageSize": 25, "pageCount": 1, "total": 2 }
+  }
+}
