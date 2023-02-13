@@ -17,10 +17,23 @@
     "about": "About",
     "contact": "Contact"
   },
+  "scheduleTypes": {
+    "full": "Full-time",
+    "part": "Part-time"
+  },
   "remoteWorks": {
-    "fully": "Fully Remote"
+    "fully": "Fully Remote",
+    "hybrid": "Hybrid",
+    "none": "On site"
   },
   "jobLocations": {
     "various": "Various locations within"
+  },
+  "collapse": {
+    "see_full_desc": "See full role description",
+    "view_all": "View all locations",
+    "share": "Share",
+    "code": "Job code",
+    "job_type": "Job type"
   }
 }

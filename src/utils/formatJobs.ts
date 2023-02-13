@@ -152,7 +152,7 @@ export function formatJobs(rawData: IJobsRes): IJob[] {
       );
     }
     if (socialMedia) {
-      newJob.remoteWorks = n(
+      newJob.socialMedia = n(
         socialMedia,
         socialMedia.map(
           (s) => ({ name: s.name, url: s.url } as IJobSocialMedia)

@@ -1,11 +1,13 @@
-import { ERemoteWork, IJob } from "@/interfaces";
-import { Button } from "flowbite-react";
+import { EJobScheduleType, ERemoteWork, IJob } from "@/interfaces";
+import { Badge, Button } from "flowbite-react";
 import { useTranslation } from "next-i18next";
+import ReactMarkdown from "react-markdown";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import React, { useState, useCallback, FC, useEffect } from "react";
 import { Collapse } from "react-collapse";
-import { HiPlus, HiStar, HiChevronDown } from "react-icons/hi";
+import { HiPlus, HiStar, HiChevronDown, HiLink } from "react-icons/hi";
+import { truncate } from "@/utils";
 
 interface IAccordionsState {
   [k: string]: { expanded: boolean; accessibilityId: string };
@@ -105,6 +107,7 @@ export const JobsCollapsibles: FC<{ jobs: IJob[] }> = ({ jobs }) => {
     const isExpanded = accordionsState![idx].expanded;
     let locations = "";
     const job = jobs[i];
+    const jobPath = `jobs/${job.code}`;
     if (job.jobLocations && job.jobLocations.length) {
       const firstLocation = job.jobLocations![0];
       if (job.jobLocations.length > 1) {
@@ -130,14 +133,49 @@ export const JobsCollapsibles: FC<{ jobs: IJob[] }> = ({ jobs }) => {
       }
     }
 
-    return { idx, id, isExpanded, locations };
+    return { idx, id, isExpanded, locations, jobPath };
+  }
+
+  function getJobTypeBadges(
+    scheduleTypes?: EJobScheduleType[],
+    remoteWorks?: ERemoteWork[]
+  ): JSX.Element {
+    console.log("scheduleTypes = ", scheduleTypes);
+    console.log("remoteWorks = ", remoteWorks);
+
+    const badges: JSX.Element[] = [];
+
+    const mappers = {
+      full: t("scheduleTypes.full"),
+      part: t("scheduleTypes.part"),
+      fully: t("remoteWorks.fully"),
+      hybrid: t("remoteWorks.hybrid"),
+      none: t("remoteWorks.none"),
+    };
+
+    if (scheduleTypes && scheduleTypes.length) {
+      scheduleTypes.forEach((s) => {
+        badges.push(<Badge color="info">{mappers[s]}</Badge>);
+      });
+    }
+
+    if (remoteWorks && remoteWorks.length) {
+      remoteWorks.forEach((r) => {
+        badges.push(<Badge color="indigo">{mappers[r]}</Badge>);
+      });
+    }
+
+    return (
+      <div className="flex flex-wrap items-center space-x-3">{badges}</div>
+    );
   }
 
   return (
     <div className="ml-6 w-3/4">
       <ul>
         {jobs.map((job, i) => {
-          const { idx, id, isExpanded, locations } = getJobSpecifics(i);
+          const { idx, id, isExpanded, locations, jobPath } =
+            getJobSpecifics(i);
           return (
             <li
               className={`${
@@ -148,7 +186,7 @@ export const JobsCollapsibles: FC<{ jobs: IJob[] }> = ({ jobs }) => {
               <div className="flex items-center">
                 <div className=" mr-auto flex w-1/2 flex-col">
                   <h5 className="mb-4">
-                    <Link href={`jobs/${job.code}`} className="link">
+                    <Link href={jobPath} className="link">
                       {job.title}
                     </Link>
                   </h5>
@@ -200,11 +238,37 @@ export const JobsCollapsibles: FC<{ jobs: IJob[] }> = ({ jobs }) => {
                 </div>
               </div>
               <Collapse isOpened={isExpanded}>
-                <div
-                  // style={{ height }}
-                  id={id}
-                >
-                  {job.description}
+                <div className="mt-7 flex flex-col" id={id}>
+                  <div className="mb-8 flex ">
+                    <div className="flex w-1/2 flex-col justify-start">
+                      <Link href={jobPath} className="link flex items-center">
+                        <span className="mr-3">
+                          {t("collapse.see_full_desc")}
+                        </span>
+                        <HiLink />
+                      </Link>
+                    </div>
+                    <div className="flex w-1/2 flex-col space-y-3">
+                      <div className="flex items-center">
+                        <span className="mr-3 font-medium">
+                          {t("collapse.code")}:{" "}
+                        </span>
+                        <span>{job.code}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <span className="mr-3 font-medium">
+                          {t("collapse.job_type")}:{" "}
+                        </span>
+                        {getJobTypeBadges(job.scheduleTypes, job.remoteWorks)}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mb-8">
+                    <p className="leading-7">{truncate(job.summary, 500)}</p>
+                  </div>
+                  <div>
+                    <Button>Apply</Button>
+                  </div>
                 </div>
               </Collapse>
             </li>
