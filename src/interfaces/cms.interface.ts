@@ -16,6 +16,35 @@ export interface IJob {
   additionalSections?: IAdditionalSection[];
   jobPostedDate?: string;
   jobLocations?: IAddressBase[];
+  jobCategory: EJobCategory;
+  experienceLevel?: EExperienceLevel[];
+  education?: EEducation[];
+}
+
+export enum EJobCategory {
+  full_stack = "full_stack",
+  front_end = "front_end",
+  back_end = "back_end",
+  dev_ops = "dev_ops",
+  ui_ux = "ui_ux",
+  content = "content",
+  other = "other",
+}
+
+export enum EExperienceLevel {
+  entry = "entry",
+  mid = "mid",
+  senior = "senior",
+  none = "",
+}
+
+export enum EEducation {
+  high_school = "high_school",
+  associates = "associates",
+  bachelors = "bachelors",
+  masters = "masters",
+  doctoral = "doctoral",
+  none = "none",
 }
 
 export enum EjobStatus {

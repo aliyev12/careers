@@ -10,21 +10,26 @@ import { useRouter } from "next/router";
 import { IJob, IJobsRes } from "@/interfaces";
 import Link from "next/link";
 import { useJobs } from "@/hooks";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { JobsList } from "@/components";
 import { formatJobs } from "@/utils";
 
 export default function Home({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const router = useRouter();
   const { initJobsState, jobsInitialized } = useJobs(formatJobs(data));
+  const [currentLocale, setCurrentLocale] = useState("en");
   const { t } = useTranslation("common");
 
   useEffect(() => {
     if (data && !jobsInitialized) {
       initJobsState();
+    } else if (router.locale !== currentLocale) {
+      initJobsState(formatJobs(data));
     }
-  }, []);
+    setCurrentLocale(router.locale!);
+  }, [router, router.locale]);
 
   return <div className="w-full">{jobsInitialized && <JobsList />}</div>;
 }
@@ -32,7 +37,6 @@ export default function Home({
 export const getStaticProps: GetStaticProps<{ data: IJobsRes }> = async ({
   locale,
 }) => {
-  // export async function getServerSideProps({ locale }) {
   const url = `${process.env.CMS_ORIGIN}${process.env.CMS_JOBS_PATH}&locale=${locale}`;
   const res: Response = await fetch(url);
   const data: IJobsRes = await res.json();

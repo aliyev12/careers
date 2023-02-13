@@ -6,9 +6,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Navbar />
-      <main className="mx-auto flex flex-wrap flex-col items-center justify-between container px-5">
-        {children}
-      </main>
+      <main className="container mx-auto h-full px-5">{children}</main>
       <Footer />
     </>
   );

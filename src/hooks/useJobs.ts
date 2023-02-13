@@ -5,7 +5,7 @@ import { GlobalContext } from "../context/GlobalContext";
 export function useJobs(initialJobs?: IJob[]) {
   const { state, setState } = useContext(GlobalContext);
 
-  function initJobsState() {
+  function initJobsState(updatedJobs?: IJob[]) {
     if (state.jobsState.isNotInitializes && initialJobs) {
       setState({
         ...state,
@@ -13,6 +13,15 @@ export function useJobs(initialJobs?: IJob[]) {
           ...state.jobsState,
           isNotInitializes: false,
           jobs: initialJobs,
+        },
+      });
+    } else if (updatedJobs) {
+      setState({
+        ...state,
+        jobsState: {
+          ...state.jobsState,
+          isNotInitializes: false,
+          jobs: updatedJobs,
         },
       });
     }

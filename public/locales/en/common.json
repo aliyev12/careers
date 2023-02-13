@@ -34,6 +34,11 @@
     "view_all": "View all locations",
     "share": "Share",
     "code": "Job code",
-    "job_type": "Job type"
+    "job_type": "Job type",
+    "apply": "Apply"
+  },
+  "jobFilter": {
+    "state": "State",
+    "refine": "Refine results"
   }
 }

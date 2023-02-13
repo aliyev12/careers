@@ -31,6 +31,9 @@ export interface PurpleAttributes {
   localizations: FluffyLocalizations;
   jobPostedDate?: string;
   jobLocations?: Address[];
+  jobCategory: string;
+  experienceLevel?: SkillTag[];
+  education?: SkillTag[];
 }
 
 export interface AdditionalSection {

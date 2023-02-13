@@ -1,4 +1,7 @@
 import {
+  EEducation,
+  EExperienceLevel,
+  EJobCategory,
   EJobScheduleType,
   EjobStatus,
   ERemoteWork,
@@ -38,6 +41,9 @@ export function formatJobs(rawData: IJobsRes): IJob[] {
       skillTags,
       additionalSections,
       jobLocations,
+      jobCategory,
+      experienceLevel,
+      education,
     } = attributes;
 
     let company: ICompany | undefined;
@@ -89,6 +95,7 @@ export function formatJobs(rawData: IJobsRes): IJob[] {
       company,
       summary,
       description,
+      jobCategory: jobCategory as EJobCategory,
       aboutTeam: n(aboutTeam),
       jobPostedDate: n(jobPostedDate),
       qualifications: n(qualifications),
@@ -112,6 +119,20 @@ export function formatJobs(rawData: IJobsRes): IJob[] {
       newJob.skillTags = n(
         skillTags,
         skillTags.map((s) => s.value)
+      );
+    }
+
+    if (experienceLevel) {
+      newJob.experienceLevel = n(
+        experienceLevel,
+        experienceLevel.map((s) => s.value as EExperienceLevel)
+      );
+    }
+
+    if (education) {
+      newJob.education = n(
+        education,
+        education.map((s) => s.value as EEducation)
       );
     }
 

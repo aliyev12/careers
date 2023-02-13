@@ -16,6 +16,10 @@
     @apply text-gray-800 dark:text-white;
   }
 
+  h4 {
+    @apply text-2xl font-semibold dark:text-white;
+  }
+
   h5 {
     @apply text-xl font-semibold dark:text-white;
   }

@@ -1,14 +1,25 @@
+import { ELocale } from "@/interfaces";
 import { Avatar, Dropdown } from "flowbite-react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC } from "react";
-import { USAIcon } from "../icons";
+import { JapanIcon, SpainIcon, USAIcon } from "../common";
 
 export const LangDropdown: FC<{}> = () => {
   const { t } = useTranslation("common");
   const router = useRouter();
   const currentLang = router.locale!;
+
+  function getIcon(lang?: string) {
+    const icon: { [k: string]: JSX.Element } = {
+      en: <USAIcon />,
+      es: <SpainIcon />,
+      ja: <JapanIcon />,
+    };
+    if (lang) return icon[lang];
+    return icon[currentLang];
+  }
 
   return (
     <Dropdown
@@ -16,7 +27,7 @@ export const LangDropdown: FC<{}> = () => {
       inline={true}
       label={
         <div className="flex items-center justify-center">
-          <USAIcon />
+          {getIcon()}
           <span className="hidden md:inline">{t(`${currentLang}.native`)}</span>
         </div>
       }
@@ -27,7 +38,7 @@ export const LangDropdown: FC<{}> = () => {
           href={router.pathname}
           locale="en"
         >
-          <USAIcon />
+          {getIcon("en")}
           <span>{t("en.native")}</span>{" "}
         </Link>
       </Dropdown.Item>
@@ -37,7 +48,7 @@ export const LangDropdown: FC<{}> = () => {
           href={router.pathname}
           locale="es"
         >
-          <USAIcon />
+          {getIcon("es")}
           <span>{t("es.native")}</span>
         </Link>
       </Dropdown.Item>
@@ -47,7 +58,7 @@ export const LangDropdown: FC<{}> = () => {
           className="inline-flex items-center"
           locale="ja"
         >
-          <USAIcon />
+          {getIcon("ja")}
           <span>{t("ja.native")}</span>{" "}
         </Link>
       </Dropdown.Item>

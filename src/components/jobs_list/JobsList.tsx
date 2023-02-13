@@ -1,18 +1,27 @@
 import { useJobs } from "@/hooks";
 import { IJob } from "@/interfaces";
-import { FC } from "react";
+import { useRouter } from "next/router";
+import { FC, useEffect, useState } from "react";
 import { JobsCollapsibles } from "./JobsCollapsibles";
-import { JobsFilter } from "./JobsFilter";
+import { JobsFilter } from "./filter/JobsFilter";
 
 export const JobsList: FC = () => {
   const { jobs } = useJobs();
+  const router = useRouter();
+  const [jobToDisplay, setJobsToDisplay] = useState<IJob[]>();
 
-  console.log("jobs = ", jobs);
+  useEffect(() => {
+    setJobsToDisplay(jobs);
+  }, [router, router.locale, jobs]);
+
+  // console.log("jobToDisplay = ", jobToDisplay);
+
+  if (!jobToDisplay) return null;
 
   return (
-    <section className=" mx-auto flex w-full justify-center">
-      <JobsFilter jobs={jobs} />
-      <JobsCollapsibles jobs={jobs} />
+    <section className="mx-auto flex w-full flex-col justify-center md:flex-row">
+      <JobsFilter />
+      <JobsCollapsibles />
     </section>
   );
 };
