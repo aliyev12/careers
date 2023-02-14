@@ -13,6 +13,7 @@ export interface IGlobalContextState {
   jobsState: {
     isNotInitializes: boolean;
     jobs: IJob[];
+    filteredJobs: IJob[];
   };
   filters: IFilters;
 }

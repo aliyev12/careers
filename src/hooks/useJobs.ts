@@ -13,6 +13,7 @@ export function useJobs(initialJobs?: IJob[]) {
           ...state.jobsState,
           isNotInitializes: false,
           jobs: initialJobs,
+          filteredJobs: initialJobs,
         },
       });
     } else if (updatedJobs) {
@@ -22,6 +23,7 @@ export function useJobs(initialJobs?: IJob[]) {
           ...state.jobsState,
           isNotInitializes: false,
           jobs: updatedJobs,
+          filteredJobs: updatedJobs,
         },
       });
     }
@@ -29,6 +31,7 @@ export function useJobs(initialJobs?: IJob[]) {
 
   return {
     jobs: state.jobsState.jobs,
+    filteredJobs: state.jobsState.filteredJobs,
     initJobsState,
     jobsInitialized:
       !state.jobsState.isNotInitializes &&

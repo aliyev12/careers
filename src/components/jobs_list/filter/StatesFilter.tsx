@@ -1,46 +1,60 @@
 import { useFilter, useJobs } from "@/hooks";
-import { ICheckboxeOption, IJob } from "@/interfaces";
+import { ICheckboxeOption } from "@/interfaces";
 import { USStates } from "@/utils";
-import { useTranslation } from "next-i18next";
-import React, { FC, useEffect, useMemo, useState } from "react";
-import { specialClass } from "../jobsListHelpers";
+import { useEffect, useMemo, useState } from "react";
 import { FilterCheckboxes } from "./FilterCheckboxes";
-import { extractAvailableStates } from "./filterHelpers";
+import {
+  extractAvailableStates,
+  initCheckboxes,
+  updateCheckboxes,
+} from "./filterHelpers";
 
 export const StatesFilter = () => {
-  const { jobs } = useJobs();
+  const { filteredJobs: jobs } = useJobs();
   const { updateFilters } = useFilter();
-  const { t } = useTranslation("common");
-  const [statesCheckboxes, setStatesCheckboxes] =
-    useState<ICheckboxeOption[]>();
+  const [statesCheckboxes, setStatesCheckboxes] = useState<ICheckboxeOption[]>(
+    []
+  );
   const [initialized, setInitialized] = useState(false);
-
-  useEffect(() => {
-    if (!initialized) {
-      initStatesCheckboxes();
-      setInitialized(true);
-    }
-  }, [jobs]);
 
   const newAvailableStates = useMemo(
     () => extractAvailableStates(jobs),
     [jobs]
   );
 
-  function initStatesCheckboxes() {
-    const newStatesOptions: ICheckboxeOption[] = [];
-    // const newAvailableStates = extractAvailableStates(jobs);
-    newAvailableStates.forEach((availableState) => {
-      const newStateOption: ICheckboxeOption = {
-        id: `${availableState}-option`,
-        value: availableState,
-        label: USStates[availableState],
-        checked: false,
-      };
-      newStatesOptions.push(newStateOption);
-    });
-    setStatesCheckboxes(newStatesOptions);
-  }
+  useEffect(() => {
+    if (!initialized) {
+      initCheckboxes({
+        newAvailableFilterItems: newAvailableStates,
+        labels: USStates,
+        setCheckboxOptions: setStatesCheckboxes,
+      });
+      setInitialized(true);
+    } else {
+      const updatedAvailableStates = extractAvailableStates(jobs);
+      updateCheckboxes({
+        checkboxOptions: statesCheckboxes,
+        newAvailableFilterItems: updatedAvailableStates,
+        setCheckboxOptions: setStatesCheckboxes,
+        labels: USStates,
+      });
+    }
+  }, [jobs]);
+
+  // function initStatesCheckboxes() {
+  //   const newStatesOptions: ICheckboxeOption[] = [];
+  //   // const newAvailableStates = extractAvailableStates(jobs);
+  //   newAvailableStates.forEach((availableState) => {
+  //     const newStateOption: ICheckboxeOption = {
+  //       id: `${availableState}-option`,
+  //       value: availableState,
+  //       label: USStates[availableState],
+  //       checked: false,
+  //     };
+  //     newStatesOptions.push(newStateOption);
+  //   });
+  //   setStatesCheckboxes(newStatesOptions);
+  // }
 
   if (!statesCheckboxes) return null;
 

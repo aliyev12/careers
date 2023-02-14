@@ -8,9 +8,14 @@ export function useFilter() {
 
   function updateFilters(filters: IFilters) {
     const newFilters = { ...state.filters, ...filters };
+    console.log("newFilters = ", newFilters);
+
+    const filteredJobs = getFilteredJobs(newFilters);
+    const newJobsState = { ...state.jobsState, filteredJobs };
     setState({
       ...state,
       filters: newFilters,
+      jobsState: newJobsState,
     });
   }
 
@@ -23,27 +28,45 @@ export function useFilter() {
   }
 
   const numOfCheckedStates = getNumOfCheckedFilters(FILTERS.USStates);
+  const numOfCheckedCities = getNumOfCheckedFilters(FILTERS.cities);
 
-  function getFilteredJobs() {
+  function getFilteredJobs(filters: IFilters) {
     const jobs = state.jobsState.jobs;
+    // const jobs = state.jobsState.filteredJobs;
     let filteredJobs: IJob[] = jobs;
 
-    for (const filter in state.filters) {
-      const checkedValues = state.filters[filter];
+    for (const filter in filters) {
+      const checkedValues = filters[filter];
+      // if (checkedValues.length === 0) {
+      //   continue;
+      // }
+
       if (checkedValues.length === 0) {
-        continue;
-      }
-      if (filter === FILTERS.USStates) {
-        filteredJobs = jobs.filter((job) => {
-          if (job.jobLocations) {
-            return job.jobLocations.some((location) => {
-              if (!location.state) return true;
-              return checkedValues.includes(location.state);
-            });
-          } else {
-            return true;
-          }
-        });
+        filteredJobs = filteredJobs;
+      } else {
+        if (filter === FILTERS.USStates) {
+          filteredJobs = filteredJobs.filter((job) => {
+            if (job.jobLocations) {
+              return job.jobLocations.some((location) => {
+                if (!location.state) return true;
+                return checkedValues.includes(location.state);
+              });
+            } else {
+              return true;
+            }
+          });
+        } else if (filter === FILTERS.cities) {
+          filteredJobs = filteredJobs.filter((job) => {
+            if (job.jobLocations) {
+              return job.jobLocations.some((location) => {
+                if (!location.city) return true;
+                return checkedValues.includes(location.city);
+              });
+            } else {
+              return true;
+            }
+          });
+        }
       }
     }
     return filteredJobs;
@@ -53,6 +76,7 @@ export function useFilter() {
     filters: state.filters,
     updateFilters,
     numOfCheckedStates,
-    filteredJobs: getFilteredJobs(),
+    numOfCheckedCities,
+    filteredJobs: state.jobsState.filteredJobs,
   };
 }

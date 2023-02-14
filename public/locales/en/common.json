@@ -39,6 +39,7 @@
   },
   "jobFilter": {
     "state": "State",
+    "city": "City",
     "refine": "Refine results"
   }
 }

@@ -6,6 +6,11 @@ const defaultValue: IGlobalContextValue = {
     jobsState: {
       isNotInitializes: true,
       jobs: [],
+      filteredJobs: [],
+    },
+    filters: {
+      USStates: [],
+      cities: [],
     },
   },
   setState: () => {},
@@ -18,6 +23,11 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
     jobsState: {
       isNotInitializes: true,
       jobs: [],
+      filteredJobs: [],
+    },
+    filters: {
+      USStates: [],
+      cities: [],
     },
   });
 

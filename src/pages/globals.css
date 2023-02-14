@@ -35,9 +35,9 @@
   }
 }
 
-.ReactCollapse--collapse {
+/* .ReactCollapse--collapse {
   transition: height 500ms;
-}
+} */
 
 /* h1 {
   @apply text-4xl font-semibold;

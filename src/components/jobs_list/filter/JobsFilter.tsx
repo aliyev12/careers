@@ -6,17 +6,25 @@ import { FC, useEffect, useState } from "react";
 import { Collapse } from "react-collapse";
 import { HiCheck, HiChevronDown } from "react-icons/hi";
 import { specialClass } from "../jobsListHelpers";
+import { CitiesFilter } from "./CitiesFilter";
 import { extractAvailableStates } from "./filterHelpers";
 import { StatesFilter } from "./StatesFilter";
+
+const IDs = {
+  refine: "refine",
+  state: "state_filter",
+  city: "cities_filter",
+};
 
 export const JobsFilter: FC = () => {
   const { jobs } = useJobs();
   const { t } = useTranslation("common");
-  const { numOfCheckedStates } = useFilter();
+  const { numOfCheckedStates, numOfCheckedCities } = useFilter();
   const { isDesktop } = useMatchMedia();
   const [accordionsState, setAccordionsState] = useState<IAccordionsState>({
-    refine: { expanded: isDesktop, accessibilityId: "refine" },
-    state_filter: { expanded: false, accessibilityId: "state_filter" },
+    refine: { expanded: isDesktop, accessibilityId: IDs.refine },
+    state_filter: { expanded: false, accessibilityId: IDs.state },
+    cities_filter: { expanded: false, accessibilityId: IDs.city },
   });
 
   useEffect(() => {
@@ -42,11 +50,6 @@ export const JobsFilter: FC = () => {
       }
     }
   }
-
-  const IDs = {
-    refine: "refine",
-    state: "state_filter",
-  };
 
   function isExpanded(section: string) {
     if (!accordionsState) return false;
@@ -97,6 +100,32 @@ export const JobsFilter: FC = () => {
             <Collapse isOpened={isExpanded(IDs.state)}>
               <div className="mt-7 flex flex-col" id={IDs.state}>
                 <StatesFilter />
+              </div>
+            </Collapse>
+          </li>
+          <li
+            className={`border border-r-0 border-l-0 border-t-gray-300 border-b-transparent py-2 last:border-b-gray-300`}
+          >
+            <button
+              aria-controls={IDs.city}
+              aria-expanded={isExpanded(IDs.city)}
+              onClick={() => handleAccordionClick(IDs.city)}
+              type="button"
+              className="flex w-full items-center justify-between  py-3 pl-5 pr-4"
+            >
+              <h6 className="mr-auto">{t("jobFilter.city")}</h6>
+              {numOfCheckedCities > 0 && (
+                <Badge icon={HiCheck} className="mr-3">
+                  {numOfCheckedCities}
+                </Badge>
+              )}
+              <HiChevronDown
+                className={`transition-all ${cls(IDs.city).chevron}`}
+              />
+            </button>
+            <Collapse isOpened={isExpanded(IDs.city)}>
+              <div className="mt-7 flex flex-col" id={IDs.city}>
+                <CitiesFilter />
               </div>
             </Collapse>
           </li>

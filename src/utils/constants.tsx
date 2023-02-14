@@ -1,5 +1,6 @@
 export const FILTERS = {
   USStates: "USStates",
+  cities: "cities",
 };
 
 export const USStates: { [k: string]: string } = {

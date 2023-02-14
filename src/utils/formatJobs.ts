@@ -153,6 +153,7 @@ export function formatJobs(rawData: IJobsRes): IJob[] {
         scheduleTypes.map((s) => s.schedule as EJobScheduleType)
       );
     }
+
     if (jobLocations) {
       newJob.jobLocations = n(
         jobLocations,
