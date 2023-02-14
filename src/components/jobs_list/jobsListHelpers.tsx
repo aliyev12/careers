@@ -3,6 +3,7 @@ import {
   ERemoteWork,
   IAccordionsState,
   IJob,
+  ISpecialClassReturn,
 } from "@/interfaces";
 import { Badge } from "flowbite-react";
 import { TFunction } from "next-i18next";
@@ -50,12 +51,7 @@ export function getJobSpecifics(
 export function specialClass(
   accordionsState: IAccordionsState,
   accordionIndex: string
-): {
-  li: string;
-  title: string;
-  body: string;
-  chevron: string;
-} {
+): ISpecialClassReturn {
   const expandedClasses = {
     li: "li-expanded",
     title: "rotate-180",

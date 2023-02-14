@@ -1,37 +1,62 @@
-import { ICheckboxeOption, IJob } from "@/interfaces";
-import { USStates } from "@/utils";
+import {
+  ICheckboxeOption,
+  IFilters,
+  IJob,
+  TFilter,
+  TFilterDirect,
+  TFilterExpLevel,
+  TFilterLocations,
+} from "@/interfaces";
 import { SetStateAction } from "react";
 
-export function extractAvailableStates(jobs: IJob[]) {
-  const extractedStates: string[] = [];
+export function extractAvailableLocations(
+  jobs: IJob[],
+  locationItem: TFilterLocations
+) {
+  const extractedLocations: string[] = [];
 
   jobs.forEach((job) => {
     if (job.jobLocations) {
       job.jobLocations.forEach((location) => {
-        if (location.state && !extractedStates.includes(location.state)) {
-          extractedStates.push(location.state);
+        if (
+          location[locationItem] &&
+          !extractedLocations.includes(location[locationItem]!)
+        ) {
+          extractedLocations.push(location[locationItem]!);
         }
       });
     }
   });
 
-  return extractedStates;
+  return extractedLocations;
 }
 
-export function extractAvailableCities(jobs: IJob[]) {
-  const extractedCities: string[] = [];
+export function extractAvailableJobCats(jobs: IJob[], item: TFilterDirect) {
+  const extracted: string[] = [];
 
   jobs.forEach((job) => {
-    if (job.jobLocations) {
-      job.jobLocations.forEach((location) => {
-        if (location.city && !extractedCities.includes(location.city)) {
-          extractedCities.push(location.city);
+    if (job[item]) {
+      extracted.push(job[item]);
+    }
+  });
+
+  return extracted;
+}
+
+export function extractAvailableExpLevels(jobs: IJob[], item: TFilterExpLevel) {
+  const extracted: string[] = [];
+
+  jobs.forEach((job) => {
+    if (job.experienceLevel) {
+      job.experienceLevel.forEach((level) => {
+        if (!extracted.includes(level)) {
+          extracted.push(level);
         }
       });
     }
   });
 
-  return extractedCities;
+  return extracted;
 }
 
 interface IChangeCheckboxesProps {
@@ -103,9 +128,36 @@ export function initCheckboxes({
     a.label > b.label ? 1 : b.label > a.label ? -1 : 0
   );
   setCheckboxOptions(newCheckboxOptions);
-  // setCheckboxOptions(
-  //   newCheckboxOptions.sort((a, b) =>
-  //     a.label > b.label ? 1 : b.label > a.label ? -1 : 0
-  //   )
-  // );
 }
+
+// (filters: IFilters) => void
+
+interface IHandleCheckboxesChangeProps {
+  checkboxOptions: ICheckboxeOption[];
+  updateFilters: (filters: IFilters) => void;
+  setCheckboxOptions: (value: SetStateAction<ICheckboxeOption[]>) => void;
+  filter: string;
+}
+
+export const handleCheckboxesChange = (
+  {
+    checkboxOptions,
+    updateFilters,
+    setCheckboxOptions,
+    filter,
+  }: IHandleCheckboxesChangeProps,
+  value: string
+) => {
+  const newCheckboxes = [...checkboxOptions];
+  const foundCheckboxIndex = newCheckboxes.map((x) => x.value).indexOf(value);
+  if (foundCheckboxIndex !== -1) {
+    const prevState = newCheckboxes[foundCheckboxIndex].checked;
+    const newState = !prevState;
+    newCheckboxes[foundCheckboxIndex].checked = newState;
+    const checkedBoxes = newCheckboxes
+      .filter((x) => x.checked)
+      .map((x) => x.value);
+    updateFilters({ [filter]: checkedBoxes });
+    setCheckboxOptions(newCheckboxes);
+  }
+};

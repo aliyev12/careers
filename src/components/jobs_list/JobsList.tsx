@@ -2,8 +2,8 @@ import { useJobs } from "@/hooks";
 import { IJob } from "@/interfaces";
 import { useRouter } from "next/router";
 import { FC, useEffect, useState } from "react";
+import { RefineJobs } from "../refine_jobs";
 import { JobsCollapsibles } from "./JobsCollapsibles";
-import { JobsFilter } from "./filter/JobsFilter";
 
 export const JobsList: FC = () => {
   const { jobs } = useJobs();
@@ -20,7 +20,7 @@ export const JobsList: FC = () => {
 
   return (
     <section className="mx-auto flex w-full flex-col justify-center md:flex-row">
-      <JobsFilter />
+      <RefineJobs />
       <JobsCollapsibles />
     </section>
   );

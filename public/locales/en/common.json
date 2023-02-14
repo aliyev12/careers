@@ -40,6 +40,20 @@
   "jobFilter": {
     "state": "State",
     "city": "City",
-    "refine": "Refine results"
+    "country": "Country",
+    "refine": "Refine results",
+    "jobCategory": "Job Category",
+    "full_stack": "Full-stack Developer",
+    "front_end": "Front-end Developer",
+    "back_end": "Back-end Developer",
+    "dev_ops": "DevOps Engineer",
+    "ui_ux": "UI/UX Designer",
+    "content": "Content Manager",
+    "other": "Other",
+    "experienceLevel": "Experience Level",
+    "entry": "Entry Level",
+    "mid": "Mid Level",
+    "senior": "Senior Level",
+    "none": "No Experience Required"
   }
 }

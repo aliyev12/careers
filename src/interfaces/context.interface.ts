@@ -6,7 +6,7 @@ export enum EMode {
 }
 
 export interface IFilters {
-  [filter: string]: string[];
+  [filter: string]: string[] | string;
 }
 
 export interface IGlobalContextState {

@@ -1,6 +1,9 @@
 export const FILTERS = {
   USStates: "USStates",
   cities: "cities",
+  countries: "countries",
+  jobCategory: "jobCategory",
+  experienceLevel: "experienceLevel",
 };
 
 export const USStates: { [k: string]: string } = {

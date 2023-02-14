@@ -8,8 +8,6 @@ export function useFilter() {
 
   function updateFilters(filters: IFilters) {
     const newFilters = { ...state.filters, ...filters };
-    console.log("newFilters = ", newFilters);
-
     const filteredJobs = getFilteredJobs(newFilters);
     const newJobsState = { ...state.jobsState, filteredJobs };
     setState({
@@ -29,17 +27,16 @@ export function useFilter() {
 
   const numOfCheckedStates = getNumOfCheckedFilters(FILTERS.USStates);
   const numOfCheckedCities = getNumOfCheckedFilters(FILTERS.cities);
+  const numOfCheckedCountries = getNumOfCheckedFilters(FILTERS.countries);
+  const numOfCheckedJobCats = getNumOfCheckedFilters(FILTERS.jobCategory);
+  const numOfCheckedExpLevels = getNumOfCheckedFilters(FILTERS.experienceLevel);
 
   function getFilteredJobs(filters: IFilters) {
     const jobs = state.jobsState.jobs;
-    // const jobs = state.jobsState.filteredJobs;
     let filteredJobs: IJob[] = jobs;
 
     for (const filter in filters) {
       const checkedValues = filters[filter];
-      // if (checkedValues.length === 0) {
-      //   continue;
-      // }
 
       if (checkedValues.length === 0) {
         filteredJobs = filteredJobs;
@@ -66,6 +63,36 @@ export function useFilter() {
               return true;
             }
           });
+        } else if (filter === FILTERS.countries) {
+          filteredJobs = filteredJobs.filter((job) => {
+            if (job.jobLocations) {
+              return job.jobLocations.some((location) => {
+                if (!location.country) return true;
+                return checkedValues.includes(location.country);
+              });
+            } else {
+              return true;
+            }
+          });
+        } else if (filter === FILTERS.jobCategory) {
+          filteredJobs = filteredJobs.filter((job) => {
+            if (job.jobCategory) {
+              return checkedValues.includes(job.jobCategory);
+            } else {
+              return true;
+            }
+          });
+        } else if (filter === FILTERS.experienceLevel) {
+          filteredJobs = filteredJobs.filter((job) => {
+            if (job.experienceLevel) {
+              return job.experienceLevel.some((level) => {
+                if (!level) return true;
+                return checkedValues.includes(level);
+              });
+            } else {
+              return true;
+            }
+          });
         }
       }
     }
@@ -77,6 +104,9 @@ export function useFilter() {
     updateFilters,
     numOfCheckedStates,
     numOfCheckedCities,
+    numOfCheckedCountries,
+    numOfCheckedJobCats,
+    numOfCheckedExpLevels,
     filteredJobs: state.jobsState.filteredJobs,
   };
 }
