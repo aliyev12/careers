@@ -19,9 +19,13 @@ export interface ISpecialClassReturn {
 export type TFilterLocations = "state" | "city" | "country";
 export type TFilterDirect = "jobCategory";
 export type TFilterExpLevel = "experienceLevel";
+export type TFilterSchedule = "scheduleTypes";
+export type TFilterRemote = "remoteWorks";
 export type TFilter =
   | "state"
   | "city"
   | "country"
   | "jobCategory"
-  | "experienceLevel";
+  | "experienceLevel"
+  | "scheduleTypes"
+  | "remoteWorks";

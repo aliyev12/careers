@@ -21,6 +21,7 @@ export const RefineSection: FC<{
     numOfCheckedCountries,
     numOfCheckedJobCats,
     numOfCheckedExpLevels,
+    numOfCheckedSchedules,
   } = useFilter();
 
   const numOfCheckedBoxes = {
@@ -29,6 +30,8 @@ export const RefineSection: FC<{
     country: numOfCheckedCountries,
     jobCategory: numOfCheckedJobCats,
     experienceLevel: numOfCheckedExpLevels,
+    scheduleTypes: numOfCheckedSchedules,
+    remoteWorks: numOfCheckedSchedules,
   };
 
   return (
@@ -42,7 +45,7 @@ export const RefineSection: FC<{
         type="button"
         className="flex w-full items-center justify-between  py-3 pl-5 pr-4"
       >
-        <h6 className="mr-auto">{t(`jobFilter.${filter}`)}</h6>
+        <h6 className="mr-auto">{t(`jobFilter.${filter}.title`)}</h6>
         {numOfCheckedBoxes[filter] > 0 && (
           <Badge icon={HiCheck} className="mr-3">
             {numOfCheckedBoxes[filter]}

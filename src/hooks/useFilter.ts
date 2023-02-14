@@ -30,6 +30,8 @@ export function useFilter() {
   const numOfCheckedCountries = getNumOfCheckedFilters(FILTERS.countries);
   const numOfCheckedJobCats = getNumOfCheckedFilters(FILTERS.jobCategory);
   const numOfCheckedExpLevels = getNumOfCheckedFilters(FILTERS.experienceLevel);
+  const numOfCheckedSchedules = getNumOfCheckedFilters(FILTERS.scheduleTypes);
+  const numOfCheckedRemotes = getNumOfCheckedFilters(FILTERS.remoteWorks);
 
   function getFilteredJobs(filters: IFilters) {
     const jobs = state.jobsState.jobs;
@@ -93,6 +95,28 @@ export function useFilter() {
               return true;
             }
           });
+        } else if (filter === FILTERS.scheduleTypes) {
+          filteredJobs = filteredJobs.filter((job) => {
+            if (job.scheduleTypes) {
+              return job.scheduleTypes.some((type) => {
+                if (!type) return true;
+                return checkedValues.includes(type);
+              });
+            } else {
+              return true;
+            }
+          });
+        } else if (filter === FILTERS.remoteWorks) {
+          filteredJobs = filteredJobs.filter((job) => {
+            if (job.remoteWorks) {
+              return job.remoteWorks.some((type) => {
+                if (!type) return true;
+                return checkedValues.includes(type);
+              });
+            } else {
+              return true;
+            }
+          });
         }
       }
     }
@@ -107,6 +131,8 @@ export function useFilter() {
     numOfCheckedCountries,
     numOfCheckedJobCats,
     numOfCheckedExpLevels,
+    numOfCheckedSchedules,
+    numOfCheckedRemotes,
     filteredJobs: state.jobsState.filteredJobs,
   };
 }

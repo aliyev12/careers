@@ -15,6 +15,8 @@ export const IDs: { [k: string]: string } = {
   country: "countries_filter",
   jobCategory: "job_category_filter",
   experienceLevel: "experience_level_filter",
+  scheduleTypes: "schedule_types_filter",
+  remoteWorks: "remote_works_filter",
 };
 
 export const RefineJobs: FC = () => {
@@ -29,6 +31,14 @@ export const RefineJobs: FC = () => {
     experience_level_filter: {
       expanded: false,
       accessibilityId: IDs.experienceLevel,
+    },
+    schedule_types_filter: {
+      expanded: false,
+      accessibilityId: IDs.scheduleTypes,
+    },
+    remote_works_filter: {
+      expanded: false,
+      accessibilityId: IDs.remoteWorks,
     },
   });
 
@@ -109,6 +119,18 @@ export const RefineJobs: FC = () => {
           <RefineSection
             cls={cls}
             filter="experienceLevel"
+            handleAccordionClick={handleAccordionClick}
+            isExpanded={isExpanded}
+          />
+          <RefineSection
+            cls={cls}
+            filter="scheduleTypes"
+            handleAccordionClick={handleAccordionClick}
+            isExpanded={isExpanded}
+          />
+          <RefineSection
+            cls={cls}
+            filter="remoteWorks"
             handleAccordionClick={handleAccordionClick}
             isExpanded={isExpanded}
           />

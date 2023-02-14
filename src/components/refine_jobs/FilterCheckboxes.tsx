@@ -1,6 +1,6 @@
 import { ICheckboxeOption } from "@/interfaces";
 import { Checkbox, Label } from "flowbite-react";
-import { ChangeEvent, FC } from "react";
+import { FC } from "react";
 
 export const FilterCheckboxes: FC<{
   options: ICheckboxeOption[];
@@ -23,18 +23,6 @@ export const FilterCheckboxes: FC<{
           </div>
         );
       })}
-      {/* <div className="flex items-center gap-2">
-        <Checkbox id={id} defaultChecked={true} value={value} onChange={eeeee => handleChange} />
-        <Label htmlFor={id}>{label}</Label>
-      </div>
-      <div className="flex items-center gap-2">
-        <Checkbox id="promotion" />
-        <Label htmlFor="promotion">I want to get promotional offers</Label>
-      </div>
-      <div className="flex items-center gap-2">
-        <Checkbox id="age" />
-        <Label htmlFor="age">I am 18 years or older</Label>
-      </div> */}
     </div>
   );
 };

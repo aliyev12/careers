@@ -4,6 +4,8 @@ export const FILTERS = {
   countries: "countries",
   jobCategory: "jobCategory",
   experienceLevel: "experienceLevel",
+  scheduleTypes: "scheduleTypes",
+  remoteWorks: "remoteWorks",
 };
 
 export const USStates: { [k: string]: string } = {

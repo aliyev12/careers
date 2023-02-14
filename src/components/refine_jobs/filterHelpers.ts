@@ -6,6 +6,8 @@ import {
   TFilterDirect,
   TFilterExpLevel,
   TFilterLocations,
+  TFilterRemote,
+  TFilterSchedule,
 } from "@/interfaces";
 import { SetStateAction } from "react";
 
@@ -51,6 +53,38 @@ export function extractAvailableExpLevels(jobs: IJob[], item: TFilterExpLevel) {
       job.experienceLevel.forEach((level) => {
         if (!extracted.includes(level)) {
           extracted.push(level);
+        }
+      });
+    }
+  });
+
+  return extracted;
+}
+
+export function extractAvailableSchedules(jobs: IJob[], item: TFilterSchedule) {
+  const extracted: string[] = [];
+
+  jobs.forEach((job) => {
+    if (job.scheduleTypes) {
+      job.scheduleTypes.forEach((type) => {
+        if (!extracted.includes(type)) {
+          extracted.push(type);
+        }
+      });
+    }
+  });
+
+  return extracted;
+}
+
+export function extractAvailableRemotes(jobs: IJob[], item: TFilterRemote) {
+  const extracted: string[] = [];
+
+  jobs.forEach((job) => {
+    if (job.remoteWorks) {
+      job.remoteWorks.forEach((type) => {
+        if (!extracted.includes(type)) {
+          extracted.push(type);
         }
       });
     }

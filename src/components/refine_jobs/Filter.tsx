@@ -6,6 +6,8 @@ import {
   TFilterDirect,
   TFilterExpLevel,
   TFilterLocations,
+  TFilterRemote,
+  TFilterSchedule,
 } from "@/interfaces";
 import { countries, USStates } from "@/utils";
 import { FC, useEffect, useMemo, useState } from "react";
@@ -18,6 +20,8 @@ import {
   initCheckboxes,
   updateCheckboxes,
   extractAvailableExpLevels,
+  extractAvailableSchedules,
+  extractAvailableRemotes,
 } from "./filterHelpers";
 
 const FILTERS: { [k: string]: string } = {
@@ -26,6 +30,8 @@ const FILTERS: { [k: string]: string } = {
   country: "countries",
   jobCategory: "jobCategory",
   experienceLevel: "experienceLevel",
+  scheduleTypes: "scheduleTypes",
+  remoteWorks: "remoteWorks",
 };
 
 export const Filter: FC<{
@@ -47,6 +53,10 @@ export const Filter: FC<{
       return extractAvailableJobCats(_jobs, _filter as TFilterDirect);
     } else if (filter === "experienceLevel") {
       return extractAvailableExpLevels(_jobs, _filter as TFilterExpLevel);
+    } else if (filter === "scheduleTypes") {
+      return extractAvailableSchedules(_jobs, _filter as TFilterSchedule);
+    } else if (filter === "remoteWorks") {
+      return extractAvailableRemotes(_jobs, _filter as TFilterRemote);
     } else {
       return [];
     }
@@ -64,16 +74,9 @@ export const Filter: FC<{
     }, {});
   }
 
-  function generateJobCatLabels(jobCats: string[]) {
-    return jobCats.reduce((a: { [k: string]: string }, c) => {
-      a[c] = t(`jobFilter.${c}`);
-      return a;
-    }, {});
-  }
-
-  function generateExpLevelLabels(jobCats: string[]) {
-    return jobCats.reduce((a: { [k: string]: string }, c) => {
-      a[c] = t(`jobFilter.${c}`);
+  function generateLabels(items: string[], _filter: string) {
+    return items.reduce((a: { [k: string]: string }, c) => {
+      a[c] = t(`jobFilter.${_filter}.${c}`);
       return a;
     }, {});
   }
@@ -82,8 +85,10 @@ export const Filter: FC<{
     state: USStates,
     city: generateCityLabels(newAvailableFilterItems),
     country: countries,
-    jobCategory: generateJobCatLabels(newAvailableFilterItems),
-    experienceLevel: generateExpLevelLabels(newAvailableFilterItems),
+    jobCategory: generateLabels(newAvailableFilterItems, "jobCategory"),
+    experienceLevel: generateLabels(newAvailableFilterItems, "experienceLevel"),
+    scheduleTypes: generateLabels(newAvailableFilterItems, "scheduleTypes"),
+    remoteWorks: generateLabels(newAvailableFilterItems, "remoteWorks"),
   };
 
   useEffect(() => {
