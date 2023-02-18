@@ -70,5 +70,15 @@
       "hybrid": "Hybrid",
       "none": "On Site"
     }
+  },
+  "search": {
+    "title": "Find your perfect job",
+    "search": "Search",
+    "placeholder": "Search by role or keyword"
+  },
+  "resultsInfo": {
+    "searched_for": "Searched for:",
+    "filter": "Filter applied",
+    "filters": "Filters applied"
   }
 }

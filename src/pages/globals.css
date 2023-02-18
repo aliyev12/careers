@@ -16,6 +16,18 @@
     @apply text-gray-800 dark:text-white;
   }
 
+  h1 {
+    @apply flex items-center text-5xl font-semibold dark:text-white;
+  }
+
+  h2 {
+    @apply text-4xl font-semibold dark:text-white;
+  }
+
+  h3 {
+    @apply text-3xl font-semibold dark:text-white;
+  }
+
   h4 {
     @apply text-2xl font-semibold dark:text-white;
   }

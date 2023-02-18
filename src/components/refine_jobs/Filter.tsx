@@ -39,7 +39,7 @@ export const Filter: FC<{
 }> = ({ filter }) => {
   const { t } = useTranslation("common");
   const { filteredJobs: jobs } = useJobs();
-  const { updateFilters } = useFilter();
+  const { updateFilters, filters } = useFilter();
   const [checkboxes, setCheckboxes] = useState<ICheckboxeOption[]>([]);
   const [initialized, setInitialized] = useState(false);
 
@@ -62,10 +62,11 @@ export const Filter: FC<{
     }
   }
 
-  const newAvailableFilterItems = useMemo(
-    () => extractAvailable(jobs, filter),
-    [jobs]
-  );
+  // const newAvailableFilterItems = useMemo(
+  //   () => extractAvailable(jobs, filter),
+  //   [jobs]
+  // );
+  const newAvailableFilterItems = extractAvailable(jobs, filter);
 
   function generateCityLabels(cities: string[]) {
     return cities.reduce((a: { [k: string]: string }, c) => {
@@ -93,10 +94,13 @@ export const Filter: FC<{
 
   useEffect(() => {
     if (!initialized) {
+      const updatedAvailableFilterItems = extractAvailable(jobs, filter);
+      // console.log("updatedAvailableFilterItems = jobs", jobs);
       initCheckboxes({
-        newAvailableFilterItems: newAvailableFilterItems,
+        newAvailableFilterItems: updatedAvailableFilterItems,
         labels: labels[filter],
         setCheckboxOptions: setCheckboxes,
+        filter: filters[FILTERS[filter]],
       });
       setInitialized(true);
     } else {
@@ -106,9 +110,11 @@ export const Filter: FC<{
         newAvailableFilterItems: updatedAvailableFilterItems,
         setCheckboxOptions: setCheckboxes,
         labels: labels[filter],
+        filterKey: FILTERS[filter],
+        filters,
       });
     }
-  }, [jobs]);
+  }, [jobs, filters]);
 
   if (!checkboxes) return null;
 

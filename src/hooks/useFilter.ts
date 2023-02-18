@@ -1,5 +1,5 @@
 import { IFilters, IJob } from "@/interfaces";
-import { FILTERS } from "@/utils";
+import { FILTERS, searchKeyword } from "@/utils";
 import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
@@ -14,6 +14,76 @@ export function useFilter() {
       ...state,
       filters: newFilters,
       jobsState: newJobsState,
+    });
+  }
+
+  function removeFilter(filter: string, item: string) {
+    const newStateFilters = { ...state.filters };
+    let newFilters = newStateFilters[filter];
+    console.log("filter = ", filter);
+    if (Array.isArray(newFilters)) {
+      newFilters = newFilters as string[];
+      const itemIndex = newFilters.indexOf(item);
+      if (itemIndex > -1) {
+        newFilters.splice(itemIndex, 1);
+
+        const newStateFilters = {
+          ...state.filters,
+          [filter]: newFilters,
+        };
+
+        const newFilteredJobs = getFilteredJobs(newStateFilters);
+
+        setState({
+          ...state,
+          filters: newStateFilters,
+          jobsState: {
+            ...state.jobsState,
+            filteredJobs: newFilteredJobs,
+          },
+        });
+      }
+    } else if (filter === "keyword") {
+      const newStateFilters = {
+        ...state.filters,
+        [filter]: "",
+      };
+
+      const newFilteredJobs = getFilteredJobs(newStateFilters);
+
+      setState({
+        ...state,
+        filters: newStateFilters,
+        jobsState: {
+          ...state.jobsState,
+          filteredJobs: newFilteredJobs,
+        },
+      });
+    }
+  }
+
+  function clearFilters() {
+    const newStateFilters = { ...state.filters };
+
+    for (const filter in newStateFilters) {
+      let newFilters: string | string[];
+      if (Array.isArray(newStateFilters[filter])) {
+        newFilters = [];
+      } else {
+        newFilters = "";
+      }
+      newStateFilters[filter] = newFilters;
+    }
+
+    const newFilteredJobs = getFilteredJobs(newStateFilters);
+
+    setState({
+      ...state,
+      filters: newStateFilters,
+      jobsState: {
+        ...state.jobsState,
+        filteredJobs: newFilteredJobs,
+      },
     });
   }
 
@@ -54,6 +124,8 @@ export function useFilter() {
               return true;
             }
           });
+        } else if (filter === FILTERS.keyword) {
+          filteredJobs = searchKeyword(filteredJobs, checkedValues as string);
         } else if (filter === FILTERS.cities) {
           filteredJobs = filteredJobs.filter((job) => {
             if (job.jobLocations) {
@@ -123,6 +195,19 @@ export function useFilter() {
     return filteredJobs;
   }
 
+  const totalNumOfFilters = Object.keys(state.filters).reduce((acc, curr) => {
+    const filter = state.filters[curr];
+    if (Array.isArray(filter)) {
+      return acc + filter.length;
+    } else if (typeof filter === "string" && filter.length > 0) {
+      return acc + 1;
+    } else {
+      return acc;
+    }
+  }, 0);
+
+  // function
+
   return {
     filters: state.filters,
     updateFilters,
@@ -133,6 +218,9 @@ export function useFilter() {
     numOfCheckedExpLevels,
     numOfCheckedSchedules,
     numOfCheckedRemotes,
-    filteredJobs: state.jobsState.filteredJobs,
+    totalNumOfFilters,
+    removeFilter,
+    clearFilters,
+    filteredJobs: getFilteredJobs(state.filters),
   };
 }

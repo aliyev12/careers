@@ -16,7 +16,6 @@ export function extractAvailableLocations(
   locationItem: TFilterLocations
 ) {
   const extractedLocations: string[] = [];
-
   jobs.forEach((job) => {
     if (job.jobLocations) {
       job.jobLocations.forEach((location) => {
@@ -97,10 +96,13 @@ interface IChangeCheckboxesProps {
   newAvailableFilterItems: string[];
   setCheckboxOptions: (value: SetStateAction<ICheckboxeOption[]>) => void;
   labels: { [k: string]: string };
+  filter?: string | string[];
+  filterKey?: string;
 }
 
 interface IUpdateCheckboxesProps extends IChangeCheckboxesProps {
   checkboxOptions: ICheckboxeOption[];
+  filters: IFilters;
 }
 
 export function updateCheckboxes({
@@ -108,6 +110,8 @@ export function updateCheckboxes({
   newAvailableFilterItems,
   setCheckboxOptions,
   labels,
+  filterKey,
+  filters,
 }: IUpdateCheckboxesProps) {
   let newCheckboxOptions: ICheckboxeOption[] = [...checkboxOptions];
   newAvailableFilterItems.forEach((availableFilterItem) => {
@@ -122,8 +126,18 @@ export function updateCheckboxes({
         checked: false,
       };
       newCheckboxOptions.push(newOption);
+    } else {
+      const existingCheckbox = newCheckboxOptions[indexOfFound];
+      if (!filters[filterKey!].includes(existingCheckbox.value)) {
+        newCheckboxOptions[indexOfFound] = {
+          ...newCheckboxOptions[indexOfFound],
+          checked: false,
+        };
+      }
     }
   });
+
+  // figure out why when pressing the tag, the list of checkboxes is not updating..
 
   newCheckboxOptions = newCheckboxOptions
     .filter((option) => {
@@ -147,14 +161,20 @@ export function initCheckboxes({
   newAvailableFilterItems,
   labels,
   setCheckboxOptions,
+  filter,
 }: IChangeCheckboxesProps) {
   const newCheckboxOptions: ICheckboxeOption[] = [];
   newAvailableFilterItems.forEach((availableFilterItem) => {
+    let checked = false;
+    if (filter && filter.includes(availableFilterItem)) {
+      checked = filter.includes(availableFilterItem);
+    }
+
     const newOption: ICheckboxeOption = {
       id: `${availableFilterItem}-option`,
       value: availableFilterItem,
       label: labels[availableFilterItem],
-      checked: false,
+      checked,
     };
     newCheckboxOptions.push(newOption);
   });

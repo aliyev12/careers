@@ -1,5 +1,11 @@
 import { IGlobalContextState, IGlobalContextValue } from "@/interfaces";
-import { createContext, FC, PropsWithChildren, useState } from "react";
+import {
+  createContext,
+  FC,
+  PropsWithChildren,
+  useEffect,
+  useState,
+} from "react";
 
 const defaultValue: IGlobalContextValue = {
   state: {
@@ -11,6 +17,11 @@ const defaultValue: IGlobalContextValue = {
     filters: {
       USStates: [],
       cities: [],
+      countries: [],
+      jobCategory: [],
+      experienceLevel: [],
+      scheduleTypes: [],
+      remoteWorks: [],
     },
   },
   setState: () => {},
@@ -26,10 +37,23 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
       filteredJobs: [],
     },
     filters: {
+      keyword: "",
       USStates: [],
       cities: [],
+      countries: ["US"],
+      jobCategory: [],
+      experienceLevel: [],
+      scheduleTypes: [],
+      remoteWorks: [],
     },
   });
+
+  // useEffect(() => {
+  //   console.log("filters changes = ", state.filters);
+  // }, [state.filters]);
+  // useEffect(() => {
+  //   console.log(" jobs = ", state.jobsState.jobs);
+  // }, [state.jobsState.jobs]);
 
   const value = {
     state,

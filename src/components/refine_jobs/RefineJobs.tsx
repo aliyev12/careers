@@ -4,7 +4,7 @@ import { Button } from "flowbite-react";
 import { useTranslation } from "next-i18next";
 import { FC, useEffect, useState } from "react";
 import { Collapse } from "react-collapse";
-import { HiChevronDown } from "react-icons/hi";
+import { HiChevronDown, HiXCircle } from "react-icons/hi";
 import { specialClass } from "../jobs_list/jobsListHelpers";
 import { RefineSection } from "./RefineSection";
 
@@ -74,9 +74,9 @@ export const RefineJobs: FC = () => {
   const cls = specialClass.bind(this, accordionsState);
 
   return (
-    <div className="mb-8 w-full md:mb-0 md:w-1/3 md:px-5">
-      <div className="mb-5 flex items-center justify-between rounded-lg bg-gray-300 py-3 px-5">
-        <h5>{t("jobFilter.refine")}</h5>
+    <>
+      <div className="mb-5 flex items-center justify-between  bg-gray-300 py-3 px-5">
+        <h5 className="dark:text-gray-800">{t("jobFilter.refine")}</h5>
         <Button
           color="light"
           aria-controls={"id"}
@@ -136,6 +136,6 @@ export const RefineJobs: FC = () => {
           />
         </ul>
       </Collapse>
-    </div>
+    </>
   );
 };

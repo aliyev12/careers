@@ -3,3 +3,4 @@ export * from "./misc";
 export * from "./truncate";
 export * from "./constants";
 export * from "./countries";
+export * from "./searchKeyword";

@@ -27,8 +27,8 @@ export const Navbar: FC<{}> = () => {
     <>
       <_Navbar fluid={false} rounded={true} className="px-5">
         <_Navbar.Brand as={Link} href="/" className="flex items-center">
-          <img src="logo.svg" className="mr-3 w-14 h-14" alt="Careers Logo" />
-          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+          <img src="/logo.svg" className="mr-3 h-14 w-14" alt="Careers Logo" />
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
             Careers
           </span>
         </_Navbar.Brand>
@@ -40,7 +40,7 @@ export const Navbar: FC<{}> = () => {
           <div className="mr-3 md:mr-8">
             <UserDropdown />
           </div>
-          <div className="flex mr-3 md:mr-0">
+          <div className="mr-3 flex md:mr-0">
             <Button
               color="light"
               onClick={() =>

@@ -1,4 +1,5 @@
 export const FILTERS = {
+  keyword: "keyword",
   USStates: "USStates",
   cities: "cities",
   countries: "countries",

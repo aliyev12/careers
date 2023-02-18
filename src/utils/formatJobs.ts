@@ -23,6 +23,8 @@ function n(val: any, newVal: any = null): any {
 export function formatJobs(rawData: IJobsRes): IJob[] {
   const jobs: IJob[] = [];
 
+  if (!rawData || !rawData.data || !rawData.data.length) return jobs;
+
   rawData.data.forEach(({ attributes }) => {
     const {
       code,
