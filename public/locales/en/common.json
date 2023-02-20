@@ -15,7 +15,8 @@
   "nav_links": {
     "home": "Home",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "careers": "Careers"
   },
   "scheduleTypes": {
     "full": "Full-time",

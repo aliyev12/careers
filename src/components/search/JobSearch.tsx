@@ -1,9 +1,11 @@
 import { useFilter } from "@/hooks";
+import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SearchIcon } from "../common";
 
 export const JobSearch = () => {
+  const router = useRouter();
   const { t } = useTranslation("common");
   const { updateFilters } = useFilter();
   const [keyword, setKeyword] = useState("");
@@ -13,6 +15,10 @@ export const JobSearch = () => {
 
     if (keyword && keyword !== "") {
       updateFilters({ keyword: keyword });
+    }
+
+    if (router.pathname === "/") {
+      router.push("/careers");
     }
   }
 

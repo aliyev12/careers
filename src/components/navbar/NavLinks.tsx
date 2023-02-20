@@ -11,11 +11,8 @@ export const NavLinks: FC<{}> = () => {
       <_Navbar.Link as={Link} href="/" active={true}>
         {t("nav_links.home")}
       </_Navbar.Link>
-      <_Navbar.Link as={Link} href="/about">
-        {t("nav_links.about")}
-      </_Navbar.Link>
-      <_Navbar.Link as={Link} href="/contact">
-        {t("nav_links.contact")}
+      <_Navbar.Link as={Link} href="/careers">
+        {t("nav_links.careers")}
       </_Navbar.Link>
     </_Navbar.Collapse>
   );

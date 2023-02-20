@@ -1,37 +1,17 @@
-import Head from "next/head";
+import { Home } from "@/components";
+import { useInitContextJobs } from "@/hooks";
+import { IJobsRes } from "@/interfaces";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { UserConfig, useTranslation } from "next-i18next";
-import {
-  GetStaticProps,
-  GetStaticPropsContext,
-  InferGetStaticPropsType,
-} from "next";
-import { useRouter } from "next/router";
-import { IJob, IJobsRes } from "@/interfaces";
-import Link from "next/link";
-import { useJobs } from "@/hooks";
-import { useEffect, useState } from "react";
-import { JobsList } from "@/components";
-import { formatJobs } from "@/utils";
 
-export default function Home({
+export default function HomePage({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const router = useRouter();
-  const { initJobsState, jobsInitialized } = useJobs(formatJobs(data));
-  const [currentLocale, setCurrentLocale] = useState("en");
-  const { t } = useTranslation("common");
+  const { jobs, jobsInitialized } = useInitContextJobs(data);
 
-  useEffect(() => {
-    if (data && !jobsInitialized) {
-      initJobsState();
-    } else if (router.locale !== currentLocale) {
-      initJobsState(formatJobs(data));
-    }
-    setCurrentLocale(router.locale!);
-  }, [router, router.locale]);
+  if (!jobs || !jobs.length) return null;
 
-  return <div className="w-full">{jobsInitialized && <JobsList />}</div>;
+  return <div className="w-full">{jobsInitialized && <Home />}</div>;
 }
 
 export const getStaticProps: GetStaticProps<{ data: IJobsRes }> = async ({
@@ -69,3 +49,17 @@ export const getStaticProps: GetStaticProps<{ data: IJobsRes }> = async ({
 // />
 // <div className={styles.thirteen}>
 // <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
+
+// const router = useRouter();
+// const { initJobsState, jobsInitialized } = useJobs(formatJobs(data));
+// const [currentLocale, setCurrentLocale] = useState("en");
+// const { t } = useTranslation("common");
+
+// useEffect(() => {
+//   if (data && !jobsInitialized) {
+//     initJobsState();
+//   } else if (router.locale !== currentLocale) {
+//     initJobsState(formatJobs(data));
+//   }
+//   setCurrentLocale(router.locale!);
+// }, [router, router.locale]);
