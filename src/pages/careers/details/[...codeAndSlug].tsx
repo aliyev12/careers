@@ -16,9 +16,11 @@ export default function JobDetails({ data }: IInfer<typeof getStaticProps>) {
   return <JobsDetails />;
 }
 
-export const getStaticProps: GetStaticProps<{ data: IJobsRes }> = async ({
-  locale,
-}) => {
+export const getStaticProps: GetStaticProps<{ data: IJobsRes }> = async (
+  __props
+) => {
+  // console.log("__props = ", __props);
+  const { locale } = __props;
   const url = `${process.env.CMS_ORIGIN}${process.env.CMS_JOBS_PATH}&locale=${locale}`;
   const res: Response = await fetch(url);
   const data: IJobsRes = await res.json();
@@ -43,7 +45,7 @@ export async function getStaticPaths({ locales }: { locales: string[] }) {
 
     for (let j = 0; j < data.data.length; j++) {
       const job = data.data[j];
-      const newPath = `${locale === "en" ? "" : "/" + locale}/details/${
+      const newPath = `${locale === "en" ? "" : "/" + locale}/careers/details/${
         job.attributes.code
       }/${job.attributes.slug}`;
       paths.push(newPath);

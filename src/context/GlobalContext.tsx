@@ -1,4 +1,6 @@
 import { IGlobalContextState, IGlobalContextValue } from "@/interfaces";
+import { updateFiltersSearchParams } from "@/utils";
+import { useRouter } from "next/router";
 import {
   createContext,
   FC,
@@ -15,6 +17,7 @@ const defaultValue: IGlobalContextValue = {
       filteredJobs: [],
     },
     filters: {
+      keyword: "",
       USStates: [],
       cities: [],
       countries: [],
@@ -47,10 +50,14 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
       remoteWorks: [],
     },
   });
+  // const router = useRouter();
 
   // useEffect(() => {
-  //   console.log("filters changes = ", state.filters);
-  // }, [state.filters]);
+  //   if (!router.isReady) return;
+  //   const updatedQuery = updateFiltersSearchParams(state.filters, router.query);
+  //   router.push({ query: updatedQuery });
+  // }, [router.isReady, state.filters]);
+
   // useEffect(() => {
   //   console.log(" jobs = ", state.jobsState.jobs);
   // }, [state.jobsState.jobs]);

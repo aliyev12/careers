@@ -106,14 +106,18 @@ export function formatJobs(rawData: IJobsRes): IJob[] {
     if (additionalSections) {
       newJob.additionalSections = n(
         additionalSections,
-        additionalSections.map(
-          (a) =>
-            ({
-              title: a.title,
-              body: a.body,
-              weight: a.weight,
-            } as AdditionalSection)
-        )
+        additionalSections
+          .map(
+            (a) =>
+              ({
+                title: a.title,
+                body: a.body,
+                weight: a.weight,
+              } as AdditionalSection)
+          )
+          .sort((a, b) =>
+            a.weight > b.weight ? 1 : b.weight > a.weight ? -1 : 0
+          )
       );
     }
 

@@ -27,6 +27,36 @@
     "hybrid": "Hybrid",
     "none": "On site"
   },
+  "education": {
+    "high_school": "High School",
+    "associates": "Associates degree",
+    "bachelors": "Bachelors degree",
+    "graduate": "Masters degree",
+    "doctoral": "Doctoral degree"
+  },
+  "experienceLevel": {
+    "entry": "Entry Level",
+    "mid": "Mid Level",
+    "senior": "Senior Level",
+    "none": "No Experience Required"
+  },
+  "jobCategory": {
+    "full_stack": "Full-stack Developer",
+    "front_end": "Front-end Developer",
+    "back_end": "Back-end Developer",
+    "dev_ops": "DevOps Engineer",
+    "ui_ux": "UI/UX Designer",
+    "content": "Content Manager",
+    "other": "Other"
+  },
+  "skillTags": {
+    "javascript": "JavaScript",
+    "node": "NodeJS",
+    "react": "React",
+    "mongo": "MongoDB",
+    "css": "CSS"
+  },
+
   "jobLocations": {
     "various": "Various locations within"
   },
@@ -81,5 +111,17 @@
     "searched_for": "Searched for:",
     "filter": "Filter applied",
     "filters": "Filters applied"
+  },
+  "details": {
+    "back_to_results": "Back to search results",
+    "code": "Job code",
+    "summary": "Position summary",
+    "team": "About team",
+    "description": "What you'll do",
+    "qualifications": "Qualifications",
+    "employment_type": "Employment type",
+    "remote": "Remote work",
+    "education": "Education",
+    "experienceLevel": "Experience level"
   }
 }

@@ -39,6 +39,18 @@
   h6 {
     @apply text-lg font-medium dark:text-white;
   }
+
+  .markdown ul {
+    @apply mb-4 list-disc pl-5;
+  }
+
+  .markdown ul li {
+    @apply mb-2 last:mb-0;
+  }
+
+  .markdown p {
+    @apply mb-3;
+  }
 }
 
 @layer components {

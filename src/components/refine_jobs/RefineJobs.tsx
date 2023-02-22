@@ -1,7 +1,9 @@
-import { useMatchMedia } from "@/hooks";
+import { useFilter, useMatchMedia } from "@/hooks";
 import { IAccordionsState } from "@/interfaces";
+import { retrieveFiltersFromSearchParams } from "@/utils";
 import { Button } from "flowbite-react";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 import { FC, useEffect, useState } from "react";
 import { Collapse } from "react-collapse";
 import { HiChevronDown, HiXCircle } from "react-icons/hi";
@@ -20,6 +22,8 @@ export const IDs: { [k: string]: string } = {
 };
 
 export const RefineJobs: FC = () => {
+  const router = useRouter();
+  const { setFilters } = useFilter();
   const { t } = useTranslation("common");
   const { isDesktop } = useMatchMedia();
   const [accordionsState, setAccordionsState] = useState<IAccordionsState>({
@@ -41,6 +45,14 @@ export const RefineJobs: FC = () => {
       accessibilityId: IDs.remoteWorks,
     },
   });
+
+  useEffect(() => {
+    if (!router.isReady) return;
+    const filtersFromUrl = retrieveFiltersFromSearchParams(router.query);
+    if (Object.keys(filtersFromUrl).length) {
+      setFilters(filtersFromUrl);
+    }
+  }, [router.isReady]);
 
   useEffect(() => {
     setAccordionsState({

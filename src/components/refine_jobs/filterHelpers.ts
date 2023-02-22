@@ -128,7 +128,11 @@ export function updateCheckboxes({
       newCheckboxOptions.push(newOption);
     } else {
       const existingCheckbox = newCheckboxOptions[indexOfFound];
-      if (!filters[filterKey!].includes(existingCheckbox.value)) {
+      if (
+        filterKey &&
+        filters[filterKey] &&
+        !filters[filterKey!].includes(existingCheckbox.value)
+      ) {
         newCheckboxOptions[indexOfFound] = {
           ...newCheckboxOptions[indexOfFound],
           checked: false,

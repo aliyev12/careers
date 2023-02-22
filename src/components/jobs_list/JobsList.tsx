@@ -10,10 +10,15 @@ import { JobSearch } from "../search/JobSearch";
 import { JobsCollapsibles } from "./JobsCollapsibles";
 
 export const JobsList: FC = () => {
+  const router = useRouter();
   const { jobs } = useJobs();
   const { clearFilters, totalNumOfFilters } = useFilter();
-  const router = useRouter();
   const [jobToDisplay, setJobsToDisplay] = useState<IJob[]>();
+
+  // useEffect(() => {
+  //   if (!router.isReady) return;
+  //   // retrieveFilters();
+  // }, [router.isReady]);
 
   useEffect(() => {
     setJobsToDisplay(jobs);

@@ -22,6 +22,8 @@ export const JobSearch = () => {
     }
   }
 
+  // find a way to determine a locale and set US as a search param on load..
+
   return (
     <div className="flex w-full flex-col items-start justify-center py-8">
       <div className="flex w-full items-center justify-center">

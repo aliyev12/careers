@@ -9,7 +9,8 @@ import {
   TFilterRemote,
   TFilterSchedule,
 } from "@/interfaces";
-import { countries, USStates } from "@/utils";
+import { countries, retrieveFiltersFromSearchParams, USStates } from "@/utils";
+import { useRouter } from "next/router";
 import { FC, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FilterCheckboxes } from "./FilterCheckboxes";
@@ -37,6 +38,7 @@ const FILTERS: { [k: string]: string } = {
 export const Filter: FC<{
   filter: TFilter;
 }> = ({ filter }) => {
+  const router = useRouter();
   const { t } = useTranslation("common");
   const { filteredJobs: jobs } = useJobs();
   const { updateFilters, filters } = useFilter();
@@ -95,7 +97,10 @@ export const Filter: FC<{
   useEffect(() => {
     if (!initialized) {
       const updatedAvailableFilterItems = extractAvailable(jobs, filter);
-      // console.log("updatedAvailableFilterItems = jobs", jobs);
+      // console.log(
+      //   "updatedAvailableFilterItems = updatedAvailableFilterItems",
+      //   updatedAvailableFilterItems
+      // );
       initCheckboxes({
         newAvailableFilterItems: updatedAvailableFilterItems,
         labels: labels[filter],
@@ -105,6 +110,10 @@ export const Filter: FC<{
       setInitialized(true);
     } else {
       const updatedAvailableFilterItems = extractAvailable(jobs, filter);
+      // console.log(
+      //   "updatedAvailableFilterItems = updatedAvailableFilterItems",
+      //   updatedAvailableFilterItems
+      // );
       updateCheckboxes({
         checkboxOptions: checkboxes,
         newAvailableFilterItems: updatedAvailableFilterItems,

@@ -1,15 +1,40 @@
 import { IFilters, IJob } from "@/interfaces";
-import { FILTERS, searchKeyword } from "@/utils";
+import { FILTERS, searchKeyword, updateFiltersSearchParams } from "@/utils";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
 export function useFilter() {
   const { state, setState } = useContext(GlobalContext);
+  const router = useRouter();
+
+  // function setFilters(newFilters: IFilters) {
+  //   const filteredJobs = getFilteredJobs(newFilters);
+
+  //   setState({
+  //     ...state,
+  //     filters: newFilters,
+  //     jobsState: newJobsState,
+  //   });
+  // }
+
+  function setFilters(newFilters: IFilters) {
+    // const newFilters = { ...state.filters, ...filters };
+    const filteredJobs = getFilteredJobs(newFilters);
+    const newJobsState = { ...state.jobsState, filteredJobs };
+    setState({
+      ...state,
+      filters: newFilters,
+      jobsState: newJobsState,
+    });
+  }
 
   function updateFilters(filters: IFilters) {
     const newFilters = { ...state.filters, ...filters };
     const filteredJobs = getFilteredJobs(newFilters);
     const newJobsState = { ...state.jobsState, filteredJobs };
+    const updatedQuery = updateFiltersSearchParams(newFilters, router.query);
+    router.push({ query: updatedQuery });
     setState({
       ...state,
       filters: newFilters,
@@ -20,7 +45,7 @@ export function useFilter() {
   function removeFilter(filter: string, item: string) {
     const newStateFilters = { ...state.filters };
     let newFilters = newStateFilters[filter];
-    console.log("filter = ", filter);
+    // console.log("filter = ", filter);
     if (Array.isArray(newFilters)) {
       newFilters = newFilters as string[];
       const itemIndex = newFilters.indexOf(item);
@@ -33,7 +58,11 @@ export function useFilter() {
         };
 
         const newFilteredJobs = getFilteredJobs(newStateFilters);
-
+        const updatedQuery = updateFiltersSearchParams(
+          newStateFilters,
+          router.query
+        );
+        router.push({ query: updatedQuery });
         setState({
           ...state,
           filters: newStateFilters,
@@ -50,6 +79,11 @@ export function useFilter() {
       };
 
       const newFilteredJobs = getFilteredJobs(newStateFilters);
+      const updatedQuery = updateFiltersSearchParams(
+        newStateFilters,
+        router.query
+      );
+      router.push({ query: updatedQuery });
 
       setState({
         ...state,
@@ -76,6 +110,11 @@ export function useFilter() {
     }
 
     const newFilteredJobs = getFilteredJobs(newStateFilters);
+    const updatedQuery = updateFiltersSearchParams(
+      newStateFilters,
+      router.query
+    );
+    router.push({ query: updatedQuery });
 
     setState({
       ...state,
@@ -211,6 +250,7 @@ export function useFilter() {
   return {
     filters: state.filters,
     updateFilters,
+    setFilters,
     numOfCheckedStates,
     numOfCheckedCities,
     numOfCheckedCountries,

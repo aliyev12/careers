@@ -19,7 +19,7 @@ export function getJobSpecifics(
   const isExpanded = accordionsState![idx].expanded;
   let locations = "";
   const job = jobs[i];
-  const jobPath = `jobs/${job.code}`;
+  const jobPath = `/careers/details/${job.code}/${job.slug}`;
   if (job.jobLocations && job.jobLocations.length) {
     const firstLocation = job.jobLocations![0];
     if (job.jobLocations.length > 1) {
