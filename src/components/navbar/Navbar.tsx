@@ -8,6 +8,8 @@ import { NavLinks } from "./NavLinks";
 import { LangDropdown } from "./LangDropdown";
 import { HiMoon, HiSun } from "react-icons/hi";
 import { EMode } from "@/interfaces";
+import "@theme-toggles/react/css/Classic.css";
+import { Classic } from "@theme-toggles/react";
 
 export const Navbar: FC<{}> = () => {
   const { theme, setTheme } = useTheme();
@@ -41,18 +43,14 @@ export const Navbar: FC<{}> = () => {
             <UserDropdown />
           </div>
           <div className="mr-3 flex md:mr-0">
-            <Button
-              color="light"
-              onClick={() =>
+            <Classic
+              duration={750}
+              toggled={theme === EMode.light}
+              onToggle={() =>
                 setTheme(theme === EMode.dark ? EMode.light : EMode.dark)
               }
-            >
-              {theme === EMode.light ? (
-                <HiMoon className="h-4 w-4" />
-              ) : (
-                <HiSun className="h-4 w-4" />
-              )}
-            </Button>
+              className="color-theme-toggle"
+            />
           </div>
           <_Navbar.Toggle />
         </div>

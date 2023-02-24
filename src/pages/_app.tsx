@@ -24,7 +24,7 @@ function App({ Component, pageProps }: AppProps) {
       <GlobalProvider>
         <ThemeProvider attribute="class">
           <div
-            className={`${montserrat.className} ${montserrat.variable} flex flex-col justify-between h-screen`}
+            className={`${montserrat.className} ${montserrat.variable} flex h-screen flex-col justify-between`}
           >
             <Layout>
               <Component {...pageProps} />

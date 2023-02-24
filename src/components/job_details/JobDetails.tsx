@@ -53,7 +53,12 @@ export const JobsDetails: FC = () => {
         <span>{job.code}</span>
       </div>
       <div className="mt-5 mb-8 flex w-full items-center justify-center">
-        <Button>Apply now</Button>
+        <Link
+          href={`/careers/apply/${job.code}/${job.slug}`}
+          className="mr-2 mb-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          {t("details.apply")}
+        </Link>
       </div>
       <div className="mt-5 mb-8 flex w-full items-center justify-center">
         <Link href={buildBackPageUrl()} className="link flex items-center">

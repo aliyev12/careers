@@ -12,6 +12,8 @@
 /.next/
 /out/
 
+*.pdf
+
 # production
 /build
 

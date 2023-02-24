@@ -1,0 +1,497 @@
+{
+  "status": "success",
+  "result": {
+    "data": {
+      "name": {
+        "raw": "Abdul Aliyev",
+        "first": "Abdul",
+        "last": "Aliyev",
+        "middle": "",
+        "title": ""
+      },
+      "phoneNumbers": ["+19106709310"],
+      "websites": [],
+      "emails": ["abdul.aliyev3@gmail.com"],
+      "dateOfBirth": null,
+      "location": {
+        "formatted": "Herndon, VA 20170, USA",
+        "postalCode": "20170",
+        "state": "Virginia",
+        "country": "United States",
+        "countryCode": "US",
+        "rawInput": "Herndon, VA",
+        "streetNumber": null,
+        "street": null,
+        "apartmentNumber": null,
+        "city": "Herndon",
+        "latitude": 38.9695545,
+        "longitude": -77.3860976
+      },
+      "objective": "",
+      "languages": ["English"],
+      "summary": "Innovative software developer dedicated to full-stack development. Passionate about building well functioning applications that provide great user experiences with responsive and accessible user interfaces. Solve problems with a complete end-to-end solution in a fast-paced, agile environment.",
+      "totalYearsExperience": 1,
+      "headShot": null,
+      "education": [
+        {
+          "id": 12946380,
+          "organization": "Northern Virginia Community College",
+          "accreditation": {
+            "education": "Master of Science in Cyber Security",
+            "inputStr": "Associate's in Cybersecurity,",
+            "matchStr": "",
+            "educationLevel": "masters"
+          },
+          "grade": null,
+          "location": null,
+          "dates": {
+            "completionDate": "2018-01-01T00:00:00.000Z",
+            "isCurrent": false,
+            "startDate": null
+          }
+        },
+        {
+          "id": 12946381,
+          "organization": "New York University",
+          "accreditation": {
+            "education": "Master of Management",
+            "inputStr": "Master's in Tourism Management,",
+            "matchStr": "",
+            "educationLevel": "masters"
+          },
+          "grade": null,
+          "location": null,
+          "dates": {
+            "completionDate": "2015-01-01T00:00:00.000Z",
+            "isCurrent": false,
+            "startDate": null
+          }
+        },
+        {
+          "id": 12946382,
+          "organization": "Brooklyn College, CUNY",
+          "accreditation": {
+            "education": "Bachelor of Business",
+            "inputStr": "Bachelor's in International Business,",
+            "matchStr": "",
+            "educationLevel": "bachelors"
+          },
+          "grade": null,
+          "location": null,
+          "dates": {
+            "completionDate": "2014-01-01T00:00:00.000Z",
+            "isCurrent": false,
+            "startDate": null
+          }
+        }
+      ],
+      "profession": "FULL-STACK DEVELOPER",
+      "linkedin": null,
+      "workExperience": [
+        {
+          "id": 25148608,
+          "jobTitle": "Full-Stack Developer",
+          "organization": "Booz Allen Hamilton",
+          "location": {
+            "formatted": "Washington, DC, USA",
+            "postalCode": null,
+            "state": "District of Columbia",
+            "country": "United States",
+            "countryCode": "US",
+            "rawInput": "Washington, DC",
+            "streetNumber": null,
+            "street": null,
+            "apartmentNumber": null,
+            "city": "Washington",
+            "latitude": 38.9071923,
+            "longitude": -77.0368707
+          },
+          "jobDescription": " DOL, Benefits.gov, GovLoans, and SSA BEST: Complete redesign of legacy applications GovLoans and SSA BEST. Rebuilt the apps with an extremely efficient framework for static site generation – Gatsby JS. Built the apps following application best practices, making them efficient, fast, responsive, and accessible. Newly resigned sites continue to receive great user feedback, and since the redesign, the popularity of the site grew exponentially from an average of 10k people per month to over 200k. Introduced a help center and chatbot features to Benefits.gov. Both features I have built to provide the most useful information to the users. Ever since the new help center and chatbot have been brought to our site, the number of user emails went significantly down, roughly from on average 2000 per month to less than 300. This was due to the fact that the new help center design was much easier to navigate, and the custom-built chatbot with cognitive capabilities is able to find many of the answers users are looking for. Introduced user authentication to Benefits.gov by leveraging Login.gov service. This feature is aimed at providing users with more custom experiences and capability to store various search results within their accounts. \\n•DOL, Office of Administrative Law Judges: Took part in the development of search feature overhaul by implementing Azure's Cognitive Search which as of GA reports from August 2020 achieved a 40% increase in the usability and customer satisfaction of the website's searching capability. \\n•DOL, Foreign Labor Application Gateway: Contributed to a major redesign of the application suite. The redesigned application helped expedite the processing time for cases from 12-16 months to 10-14 months. Also, it significantly improved the uptime of the website during the busiest seasons. ",
+          "dates": {
+            "startDate": "2022-04-19T00:00:00.000Z",
+            "endDate": "2023-02-24T00:00:00.000Z",
+            "monthsInPosition": 10,
+            "isCurrent": true
+          },
+          "occupation": {
+            "jobTitle": "Full-Stack Developer",
+            "jobTitleNormalized": "Full Stack Developer",
+            "managementLevel": "Low",
+            "classification": {
+              "title": "Programmers and software development professionals ",
+              "minorGroup": "Information Technology Professionals",
+              "subMajorGroup": "SCIENCE, RESEARCH, ENGINEERING AND TECHNOLOGY PROFESSIONALS",
+              "majorGroup": "PROFESSIONAL OCCUPATIONS",
+              "socCode": 2134
+            }
+          }
+        },
+        {
+          "id": 25148609,
+          "jobTitle": "IT Ops Program Analyst (Full-Stack Developer)",
+          "organization": "DHS",
+          "location": {
+            "formatted": "Arlington County, Arlington, VA, USA",
+            "postalCode": null,
+            "state": "Virginia",
+            "country": "United States",
+            "countryCode": "US",
+            "rawInput": "Arlington, VA",
+            "streetNumber": null,
+            "street": null,
+            "apartmentNumber": null,
+            "city": "Arlington",
+            "latitude": 38.8816208,
+            "longitude": -77.09098089999999
+          },
+          "jobDescription": " Cybersecurity and Infrastructure Security Agency, OCIO: Developed and maintained help desk application that provided support to 400+ users. The newly developed application lowered the average time of handling user issues by 36% and significantly improved the workflow of help desk personnel. ",
+          "dates": {
+            "startDate": "2022-04-19T00:00:00.000Z",
+            "endDate": "2022-10-17T00:00:00.000Z",
+            "monthsInPosition": 6,
+            "isCurrent": false
+          },
+          "occupation": {
+            "jobTitle": "IT Ops Program Analyst (Full-Stack Developer)",
+            "jobTitleNormalized": "Full Stack Developer",
+            "managementLevel": "Low",
+            "classification": {
+              "title": "Programmers and software development professionals ",
+              "minorGroup": "Information Technology Professionals",
+              "subMajorGroup": "SCIENCE, RESEARCH, ENGINEERING AND TECHNOLOGY PROFESSIONALS",
+              "majorGroup": "PROFESSIONAL OCCUPATIONS",
+              "socCode": 2134
+            }
+          }
+        },
+        {
+          "id": 25148610,
+          "jobTitle": "Program Assistant (Frontend Developer)",
+          "organization": "DOI",
+          "location": {
+            "formatted": "Sterling, VA, USA",
+            "postalCode": null,
+            "state": "Virginia",
+            "country": "United States",
+            "countryCode": "US",
+            "rawInput": "Sterling, VA",
+            "streetNumber": null,
+            "street": null,
+            "apartmentNumber": null,
+            "city": "Sterling",
+            "latitude": 39.0066993,
+            "longitude": -77.4291298
+          },
+          "jobDescription": " Bureau of Safety and Environmental Enforcement, HR: Participated in the development of highly interactive e-learning courses. Newly developed courses improved employee participation by 25%, and the number of late submissions of mandatory courses dropped by 30%. ",
+          "dates": {
+            "startDate": "2022-02-16T00:00:00.000Z",
+            "endDate": "2022-10-17T00:00:00.000Z",
+            "monthsInPosition": 8,
+            "isCurrent": false
+          },
+          "occupation": {
+            "jobTitle": "Program Assistant (Frontend Developer)",
+            "jobTitleNormalized": "Program Developer",
+            "managementLevel": "Low",
+            "classification": {
+              "title": "Programmers and software development professionals ",
+              "minorGroup": "Information Technology Professionals",
+              "subMajorGroup": "SCIENCE, RESEARCH, ENGINEERING AND TECHNOLOGY PROFESSIONALS",
+              "majorGroup": "PROFESSIONAL OCCUPATIONS",
+              "socCode": 2134
+            }
+          }
+        },
+        {
+          "id": 25148611,
+          "jobTitle": "Unit Supply Specialist",
+          "organization": "US Army",
+          "location": {
+            "formatted": "Fort Bragg, NC, USA",
+            "postalCode": null,
+            "state": "North Carolina",
+            "country": "United States",
+            "countryCode": "US",
+            "rawInput": "Ft Bragg, NC",
+            "streetNumber": null,
+            "street": null,
+            "apartmentNumber": null,
+            "city": "Fort Bragg",
+            "latitude": 35.1414552,
+            "longitude": -79.0079949
+          },
+          "jobDescription": " Administered and maintained over $1M worth of equipment. Achieved successful completion of over 400 service requests for equipment. ",
+          "dates": {
+            "startDate": "2022-11-09T00:00:00.000Z",
+            "endDate": "2022-11-12T00:00:00.000Z",
+            "monthsInPosition": 0,
+            "isCurrent": false
+          },
+          "occupation": {
+            "jobTitle": "Unit Supply Specialist",
+            "jobTitleNormalized": "Unit Supply Specialist",
+            "managementLevel": "Low",
+            "classification": null
+          }
+        }
+      ],
+      "skills": [
+        {
+          "id": 139239408,
+          "emsiId": "KS7K2A142LYPQ2Q5N1Q6",
+          "name": "Chatbot",
+          "lastUsed": "2023-02-24",
+          "numberOfMonths": 10,
+          "type": "hard_skill",
+          "sources": [
+            {
+              "section": "WorkExperience",
+              "position": 0,
+              "workExperienceId": 25148608
+            }
+          ]
+        },
+        {
+          "id": 139239410,
+          "emsiId": "KS122LN6CLX3P61KWSP2",
+          "name": "Customer Satisfaction",
+          "lastUsed": "2023-02-24",
+          "numberOfMonths": 10,
+          "type": "hard_skill",
+          "sources": [
+            {
+              "section": "WorkExperience",
+              "position": 0,
+              "workExperienceId": 25148608
+            }
+          ]
+        },
+        {
+          "id": 139239411,
+          "emsiId": "ESFD78E44C463297B830",
+          "name": "Infrastructure Security",
+          "lastUsed": "2022-10-17",
+          "numberOfMonths": 6,
+          "type": "hard_skill",
+          "sources": [
+            {
+              "section": "WorkExperience",
+              "position": 1,
+              "workExperienceId": 25148609
+            }
+          ]
+        },
+        {
+          "id": 139239412,
+          "emsiId": "KS1206R5X9WMPKSN0T9T",
+          "name": "Administrative Law",
+          "lastUsed": "2023-02-24",
+          "numberOfMonths": 10,
+          "type": "hard_skill",
+          "sources": [
+            {
+              "section": "WorkExperience",
+              "position": 0,
+              "workExperienceId": 25148608
+            }
+          ]
+        },
+        {
+          "id": 139239413,
+          "emsiId": "ES5A281A8917181656AD",
+          "name": "LESS",
+          "lastUsed": "2023-02-24",
+          "numberOfMonths": 10,
+          "type": "hard_skill",
+          "sources": [
+            {
+              "section": "WorkExperience",
+              "position": 0,
+              "workExperienceId": 25148608
+            }
+          ]
+        },
+        {
+          "id": 139239414,
+          "emsiId": "KSUMUUUWH2LGA7IKVOX7",
+          "name": "User Feedback",
+          "lastUsed": "2023-02-24",
+          "numberOfMonths": 10,
+          "type": "hard_skill",
+          "sources": [
+            {
+              "section": "WorkExperience",
+              "position": 0,
+              "workExperienceId": 25148608
+            }
+          ]
+        },
+        {
+          "id": 139239415,
+          "emsiId": "KS123JT5Z1WB0Z4CL0BH",
+          "name": "Enforcement",
+          "lastUsed": "2022-10-17",
+          "numberOfMonths": 8,
+          "type": "hard_skill",
+          "sources": [
+            {
+              "section": "WorkExperience",
+              "position": 2,
+              "workExperienceId": 25148610
+            }
+          ]
+        },
+        {
+          "id": 139239416,
+          "emsiId": "KS441PC61LH6SWW9P97Q",
+          "name": "Usability",
+          "lastUsed": "2023-02-24",
+          "numberOfMonths": 10,
+          "type": "hard_skill",
+          "sources": [
+            {
+              "section": "WorkExperience",
+              "position": 0,
+              "workExperienceId": 25148608
+            }
+          ]
+        },
+        {
+          "id": 139239417,
+          "emsiId": "ES9C0ADA3C9397DD6AED",
+          "name": "Agile Software Development",
+          "lastUsed": null,
+          "numberOfMonths": null,
+          "type": "hard_skill",
+          "sources": [
+            { "section": "Summary", "position": null, "workExperienceId": null }
+          ]
+        },
+        {
+          "id": 139239418,
+          "emsiId": "KS121XY6VSGJ3Z6J82FQ",
+          "name": "Infrastructure",
+          "lastUsed": "2022-10-17",
+          "numberOfMonths": 6,
+          "type": "soft_skill",
+          "sources": [
+            {
+              "section": "WorkExperience",
+              "position": 1,
+              "workExperienceId": 25148609
+            }
+          ]
+        },
+        {
+          "id": 139239419,
+          "emsiId": "KS122MK65TBR6RDBZL1P",
+          "name": "Cyber Security",
+          "lastUsed": "2022-10-17",
+          "numberOfMonths": 6,
+          "type": "hard_skill",
+          "sources": [
+            {
+              "section": "WorkExperience",
+              "position": 1,
+              "workExperienceId": 25148609
+            }
+          ]
+        },
+        {
+          "id": 139239409,
+          "emsiId": "KS1262461C21Y8GBMGW4",
+          "name": "Uptime",
+          "lastUsed": "2023-02-24",
+          "numberOfMonths": 10,
+          "type": "hard_skill",
+          "sources": [
+            {
+              "section": "WorkExperience",
+              "position": 0,
+              "workExperienceId": 25148608
+            }
+          ]
+        },
+        {
+          "id": 139239420,
+          "emsiId": "KS120S165SXK6CKVK77P",
+          "name": "Authentications",
+          "lastUsed": "2023-02-24",
+          "numberOfMonths": 10,
+          "type": "hard_skill",
+          "sources": [
+            {
+              "section": "WorkExperience",
+              "position": 0,
+              "workExperienceId": 25148608
+            }
+          ]
+        }
+      ],
+      "certifications": [],
+      "publications": [],
+      "referees": [],
+      "sections": [
+        {
+          "sectionType": "PersonalDetails",
+          "bbox": [182.59044, 58.08191, 443.20337, 89.097534],
+          "pageIndex": 0,
+          "text": "Abdul Aliyev 910-670-9310 | abdul.aliyev3@gmail.com | Herndon, VA"
+        },
+        {
+          "sectionType": "Summary",
+          "bbox": [90.14112, 109.648315, 525.37823, 162.29755],
+          "pageIndex": 0,
+          "text": "Full-Stack Developer Innovative software developer dedicated to full-stack development. Passionate about building well functioning applications that provide great user experiences with responsive and accessible user interfaces. Solve problems with a complete end-to-end solution in a fast-paced, agile environment."
+        },
+        {
+          "sectionType": "WorkExperience",
+          "bbox": [81.52416, 183.01392, 552.50366, 681.76654],
+          "pageIndex": 0,
+          "text": "Professional Experience BOOZ ALLEN HAMILTON – Washington, DC • Full-Stack Developer, 4/19 to Present • DOL, Benefits.gov, GovLoans, and SSA BEST: Complete redesign of legacy applications GovLoans and SSA BEST. Rebuilt the apps with an extremely efficient framework for static site generation – Gatsby JS. Built the apps following application best practices, making them efficient, fast, responsive, and accessible. Newly resigned sites continue to receive great user feedback, and since the redesign, the popularity of the site grew exponentially from an average of 10k people per month to over 200k. Introduced a help center and chatbot features to Benefits.gov. Both features I have built to provide the most useful information to the users. Ever since the new help center and chatbot have been brought to our site, the number of user emails went significantly down, roughly from on average 2000 per month to less than 300. This was due to the fact that the new help center design was much easier to navigate, and the custom-built chatbot with cognitive capabilities is able to find many of the answers users are looking for. Introduced user authentication to Benefits.gov by leveraging Login.gov service. This feature is aimed at providing users with more custom experiences and capability to store various search results within their accounts. • DOL, Office of Administrative Law Judges: Took part in the development of search feature overhaul by implementing Azure's Cognitive Search which as of GA reports from August 2020 achieved a 40% increase in the usability and customer satisfaction of the website's searching capability. • DOL, Foreign Labor Application Gateway: Contributed to a major redesign of the application suite. The redesigned application helped expedite the processing time for cases from 12-16 months to 10-14 months. Also, it significantly improved the uptime of the website during the busiest seasons. DHS – Arlington, VA • IT Ops Program Analyst (Full-Stack Developer), 10/17 - 4/19 • Cybersecurity and Infrastructure Security Agency, OCIO: Developed and maintained help desk application that provided support to 400+ users. The newly developed application lowered the average time of handling user issues by 36% and significantly improved the workflow of help desk personnel. DOI – Sterling, VA • Program Assistant (Frontend Developer), 2/16 - 10/17 • Bureau of Safety and Environmental Enforcement, HR: Participated in the development of highly interactive e-learning courses. Newly developed courses improved employee participation by 25%, and the number of late submissions of mandatory courses dropped by 30%. US Army – Ft Bragg, NC • Unit Supply Specialist, 11/09 - 11/12 • Administered and maintained over $1M worth of equipment. Achieved successful completion of over 400 service requests for equipment."
+        },
+        {
+          "sectionType": "Education",
+          "bbox": [126.82273, 702.64703, 517.0481, 754.36176],
+          "pageIndex": 0,
+          "text": "Education NORTHERN VIRGINIA COMMUNITY COLLEGE • Associate's in Cybersecurity, 2018 NEW YORK UNIVERSITY • Master's in Tourism Management, 2015 BROOKLYN COLLEGE CUNY • Bachelor's in International Business, 2014"
+        }
+      ],
+      "isResumeProbability": 99,
+      "rawText": "Abdul Aliyev 910-670-9310 | abdul.aliyev3@gmail.com | Herndon, VA\\nFull-Stack Developer Innovative software developer dedicated to full-stack development. Passionate about building well functioning applications that provide great user experiences with responsive and accessible user interfaces. Solve problems with a complete end-to-end solution in a fast-paced, agile environment.\\nProfessional Experience BOOZ ALLEN HAMILTON – Washington, DC • Full-Stack Developer, 4/19 to Present • DOL, Benefits.gov, GovLoans, and SSA BEST: Complete redesign of legacy applications GovLoans and SSA BEST. Rebuilt the apps with an extremely efficient framework for static site generation – Gatsby JS. Built the apps following application best practices, making them efficient, fast, responsive, and accessible. Newly resigned sites continue to receive great user feedback, and since the redesign, the popularity of the site grew exponentially from an average of 10k people per month to over 200k. Introduced a help center and chatbot features to Benefits.gov. Both features I have built to provide the most useful information to the users. Ever since the new help center and chatbot have been brought to our site, the number of user emails went significantly down, roughly from on average 2000 per month to less than 300. This was due to the fact that the new help center design was much easier to navigate, and the custom-built chatbot with cognitive capabilities is able to find many of the answers users are looking for. Introduced user authentication to Benefits.gov by leveraging Login.gov service. This feature is aimed at providing users with more custom experiences and capability to store various search results within their accounts. • DOL, Office of Administrative Law Judges: Took part in the development of search feature overhaul by implementing Azure's Cognitive Search which as of GA reports from August 2020 achieved a 40% increase in the usability and customer satisfaction of the website's searching capability. • DOL, Foreign Labor Application Gateway: Contributed to a major redesign of the application suite. The redesigned application helped expedite the processing time for cases from 12-16 months to 10-14 months. Also, it significantly improved the uptime of the website during the busiest seasons. DHS – Arlington, VA • IT Ops Program Analyst (Full-Stack Developer), 10/17 - 4/19 • Cybersecurity and Infrastructure Security Agency, OCIO: Developed and maintained help desk application that provided support to 400+ users. The newly developed application lowered the average time of handling user issues by 36% and significantly improved the workflow of help desk personnel. DOI – Sterling, VA • Program Assistant (Frontend Developer), 2/16 - 10/17 • Bureau of Safety and Environmental Enforcement, HR: Participated in the development of highly interactive e-learning courses. Newly developed courses improved employee participation by 25%, and the number of late submissions of mandatory courses dropped by 30%. US Army – Ft Bragg, NC • Unit Supply Specialist, 11/09 - 11/12 • Administered and maintained over $1M worth of equipment. Achieved successful completion of over 400 service requests for equipment.\\nEducation NORTHERN VIRGINIA COMMUNITY COLLEGE • Associate's in Cybersecurity, 2018 NEW YORK UNIVERSITY • Master's in Tourism Management, 2015 BROOKLYN COLLEGE CUNY • Bachelor's in International Business, 2014"
+    },
+    "meta": {
+      "identifier": "HuTsTEMi",
+      "fileName": "resumeAbdulAliyev.pdf",
+      "ready": true,
+      "readyDt": "2023-02-24T20:41:50.056Z",
+      "failed": false,
+      "expiryTime": null,
+      "language": "en",
+      "pdf": "http://api.affinda.com/v2/resumes",
+      "parentDocument": null,
+      "childDocuments": [],
+      "pages": [
+        {
+          "id": 13609746,
+          "pageIndex": 0,
+          "image": null,
+          "height": 792,
+          "width": 612,
+          "rotation": 0
+        }
+      ],
+      "isVerified": true,
+      "reviewUrl": null,
+      "ocrConfidence": null,
+      "validatedDt": "2023-02-24T20:41:50.056937Z",
+      "exportedDt": null,
+      "isExported": false,
+      "createdDt": "2023-02-24T20:41:45.154431Z",
+      "errorDetail": null,
+      "documentType": "resume",
+      "file": "http://api.affinda.com/v2/resumes"
+    },
+    "error": { "errorCode": null, "errorDetail": null }
+  }
+}

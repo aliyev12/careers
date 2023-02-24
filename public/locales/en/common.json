@@ -115,6 +115,7 @@
   "details": {
     "back_to_results": "Back to search results",
     "code": "Job code",
+    "apply": "Apply now",
     "summary": "Position summary",
     "team": "About team",
     "description": "What you'll do",
@@ -122,6 +123,54 @@
     "employment_type": "Employment type",
     "remote": "Remote work",
     "education": "Education",
-    "experienceLevel": "Experience level"
+    "experienceLevel": "Experience level",
+    "facts": "Quick facts",
+    "compensation": "Salary estimate",
+    "from_to_amount_range": "From {{lowest_amount}} to {{highest_amount}}",
+    "compensationFrequency": {
+      "hourly": "{{amount}} per hour",
+      "weekly": "{{amount}} per week",
+      "monthly": "{{amount}} once a month",
+      "bi-monthly": "{{amount twice a month}}",
+      "annual": "{{amount}} yearly"
+    }
+  },
+  "apply": {
+    "continue": "Continue",
+    "continue_guest": "Continue as guest",
+    "resume": {
+      "stepper_short": "Resume",
+      "stepper_full": "Upload resume",
+      "page_title": "Add a resume for the employer",
+      "instructions": "Please submit your resume. It will help us understand which teams most closely match your skills and interests. Share your resume in PDF format.",
+      "error": {
+        "title_single": "We detected the following issue while uploading your resume:",
+        "title_multiple": "We detected the following issues while uploading your resume:",
+        "try_again": "Please, try uploading your resume again",
+        "too_many": "More than one file has been attached. Please, only upload one file containing your resume.",
+        "wrong_type": "You attempted to upload an unsupported type of file for your resume. Please, only upload a resume in PDF format."
+      },
+      "dropzone": {
+        "drop_here": "Drop resume here...",
+        "drag_n_drop": "Drag and drop your resume here",
+        "attach": "Attach resume",
+        "your_resume": "Your resume:"
+      }
+    },
+    "info": {
+      "stepper_short": "Info",
+      "stepper_full": "Personal info",
+      "page_title": "Provide personal information"
+    },
+    "questions": {
+      "stepper_short": "Questions",
+      "stepper_full": "Job questions",
+      "page_title": "Answer job-specific questions"
+    },
+    "review": {
+      "stepper_short": "Review",
+      "stepper_full": "Review and submit",
+      "page_title": "Review your answers and submit application"
+    }
   }
 }
