@@ -6,7 +6,7 @@ import { Button } from "flowbite-react";
 import { FC, useCallback, useContext, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { JobQuestions } from "./JobQuestions";
-import { PersonalQuestions } from "./PersonalQuestions";
+import { PersonalQuestions } from "./info/PersonalQuestions";
 import { Review } from "./Review";
 import { Stepper } from "./Stepper";
 import { UploadResume } from "./UploadResume";
@@ -50,11 +50,11 @@ export const Apply: FC = () => {
       {step === EStep.info && <PersonalQuestions />}
       {step === EStep.questions && <JobQuestions />}
       {step === EStep.review && <Review />}
-      <div className="flex w-full items-center justify-center">
+      {/* <div className="flex w-full items-center justify-center">
         <Button disabled={stepIsInvalid} onClick={() => nextStep()}>
           {t("apply.continue")}
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 };

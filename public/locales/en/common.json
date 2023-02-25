@@ -160,7 +160,39 @@
     "info": {
       "stepper_short": "Info",
       "stepper_full": "Personal info",
-      "page_title": "Provide personal information"
+      "page_title": "Provide personal information",
+      "error": {
+        "firstName": {
+          "required": "First name is required but hasn't been provided",
+          "min": "First name is too short"
+        },
+        "lastName": {
+          "required": "Last name is required but hasn't been provided",
+          "min": "Last name is too short"
+        },
+        "email": {
+          "required": "Email is required but hasn't been provided",
+          "invalid": "Email is invalid"
+        },
+        "phone": {
+          "required": "Phone number is required but hasn't been provided",
+          "invalid": "Phone number is invalid"
+        }
+      },
+      "fields": {
+        "firstName": {
+          "label": "First name"
+        },
+        "lastName": {
+          "label": "Last name"
+        },
+        "email": {
+          "label": "Email"
+        },
+        "phone": {
+          "label": "Phone number"
+        }
+      }
     },
     "questions": {
       "stepper_short": "Questions",
