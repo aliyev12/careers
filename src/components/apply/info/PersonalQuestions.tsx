@@ -8,6 +8,7 @@ import { infoSchema } from "./infoSchema";
 import { InputGroup } from "./InputGroup";
 import * as Yup from "yup";
 import { Continue } from "../Continue";
+import { EAPIStatus, postJobApplication } from "@/utils";
 
 const InfoForm = () => {
   const { t } = useTranslation();
@@ -17,37 +18,32 @@ const InfoForm = () => {
     values: IFormValues,
     helpers: FormikHelpers<IFormValues>
   ) {
-    const { setSubmitting } = helpers;
+    // console.log("helpers = ", helpers);
+    const { setSubmitting, setErrors } = helpers;
     setSubmitting(true);
     setLoading(true);
 
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/careers`,
-        {
-          method: "POST",
-          body: JSON.stringify(values),
-          headers: {
-            "Content-Type": "application/json",
-          },
+    const result = await postJobApplication(values);
+
+    console.log("result = ", result);
+
+    if (
+      result.status === EAPIStatus.validation &&
+      result.validationErrors &&
+      Array.isArray(result.validationErrors)
+    ) {
+      const newErrors: { [k: string]: string } = {};
+      result.validationErrors.forEach((error) => {
+        const field = error.param;
+        if (!newErrors[field]) {
+          newErrors[field] = error.msg;
         }
-      );
-      const parsedResponse = await response.json();
-
-      console.log("parsedResponse = ", parsedResponse);
-
-      if (response.ok && parsedResponse.status === "success") {
-        console.log("SUCCESS!!!");
-      }
-      setSubmitting(false);
-      setLoading(false);
-    } catch (error) {
-      setSubmitting(false);
-      setLoading(false);
+      });
+      setErrors(newErrors);
     }
 
-    // console.log("helpers = ", helpers);
-    // console.log("values = ", values);
+    setSubmitting(false);
+    setLoading(false);
   }
 
   return (
@@ -68,7 +64,10 @@ const InfoForm = () => {
           isSubmitting,
           handleSubmit,
           setSubmitting,
+          status,
         } = formik;
+
+        // console.log("formik = ", formik);
 
         const field = (id: TFields) => (
           <Field

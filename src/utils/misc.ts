@@ -1,3 +1,3 @@
-export function log({ message }: { message: string }): void {
+export function log({ message }: { message: any }): void {
   console.error(message);
 }
