@@ -41,7 +41,7 @@ export const Apply: FC = () => {
   // const stepIsInvalid = validateSteps(step);
 
   return (
-    <div>
+    <div className="mb-28">
       <Stepper />
       <div className="my-8 flex w-full justify-center">
         <h3>{job.title}</h3>

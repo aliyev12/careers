@@ -74,7 +74,7 @@ export const Stepper = () => {
   };
 
   return (
-    <div className="mt-8 flex w-full justify-center">
+    <div className="mt-8  flex w-full justify-center">
       <ol className="flex w-full items-center text-center text-sm font-medium text-gray-500 dark:text-gray-400 sm:text-base">
         {STEPS.map((STEP, i) => {
           const itemProps = {
