@@ -6,8 +6,8 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Navbar />
-      <main className="container mx-auto h-full px-5">{children}</main>
-      {/* <Footer /> */}
+      <main className="container mx-auto mb-auto px-5">{children}</main>
+      <Footer />
     </>
   );
 };

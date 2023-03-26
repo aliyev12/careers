@@ -3,3 +3,4 @@ export * from "./useMatchMedia";
 export * from "./useFilter";
 export * from "./useCodeAndSlug";
 export * from "./useInitContextJobs";
+export * from "./useAuth";

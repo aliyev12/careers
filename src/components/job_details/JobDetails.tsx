@@ -33,7 +33,7 @@ export const JobsDetails: FC = () => {
     return null;
   }
 
-  console.log("job = ", job);
+  // console.log("job = ", job);
 
   return (
     <div className="mx-auto w-full max-w-3xl">

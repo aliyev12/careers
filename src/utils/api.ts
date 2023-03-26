@@ -9,7 +9,7 @@
 //   return result;
 // }
 
-import { IFormValues } from "@/components/apply/info/constants";
+// import { IFormValues } from "@/components/apply/info/constants";
 import { log } from "./misc";
 
 export enum EAPIStatus {
@@ -46,7 +46,7 @@ export interface IPostJobAppResult {
   validationErrors?: IValidationError[];
 }
 
-export async function postJobApplication(values: IFormValues) {
+export async function postJobApplication(values: { [k: string]: string }) {
   const result: IPostJobAppResult = {
     status: EAPIStatus.fail,
     jobApplication: undefined,

@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { HiCheckCircle, HiOutlineUpload, HiTrash } from "react-icons/hi";
 import { Document, Page, pdfjs } from "react-pdf";
 import { Continue } from "./Continue";
+import dynamic from "next/dynamic";
 
 const CLEAR_ERRORS_TIME = 60000;
 
@@ -36,20 +37,45 @@ export const UploadResume: FC = () => {
   async function parseResume(file: any) {
     try {
       const data = new FormData();
+      file.fieldname = "joe_resume";
       data.append("file", file);
+      data.append("title", "resume");
       // data.append('user', 'hubot')
-      const response = await fetch("/api/parse-resume", {
-        method: "POST",
-        body: data,
-      });
+      const response = await fetch(
+        "http://localhost:3333/careers/parse-resume",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
       const jsonRes = await response.json();
       updateParsedResume(jsonRes);
-      console.log("jsonRes = ", jsonRes);
     } catch (error) {
       // @ts-ignore
       log({ message: error.message });
     }
   }
+  // async function parseResume(file: any) {
+  //   try {
+  //     const data = new FormData();
+  //     file.fieldname = "joe_resume";
+  //     data.append("file", file);
+  //     // data.append('user', 'hubot')
+  //     const response = await fetch(
+  //       "http://localhost:3333/careers/parse-resume",
+  //       {
+  //         method: "POST",
+  //         body: data,
+  //       }
+  //     );
+  //     const jsonRes = await response.json();
+  //     updateParsedResume(jsonRes);
+  //     console.log("jsonRes = ", jsonRes);
+  //   } catch (error) {
+  //     // @ts-ignore
+  //     log({ message: error.message });
+  //   }
+  // }
 
   const onDrop = useCallback((acceptedFiles: any[]) => {
     const file = acceptedFiles[0];
@@ -112,6 +138,8 @@ export const UploadResume: FC = () => {
   const stepIsInvalid = useMemo(() => {
     return !validateSteps(step);
   }, [uloadedResume.exists, step]);
+
+  // console.log(uloadedResume);
 
   return (
     <>
@@ -176,7 +204,7 @@ export const UploadResume: FC = () => {
             </div>
           )}
 
-          {uloadedResume.exists && (
+          {uloadedResume.exists && uloadedResume.base64 && (
             <div className="flex w-full flex-col justify-center">
               <Alert color="success" icon={HiCheckCircle} className="mb-8 ">
                 <div className="flex">
@@ -212,6 +240,9 @@ export const UploadResume: FC = () => {
                     const { numPages } = props;
                     setNumPages(numPages);
                   }}
+                  // onLoadError={(e) =>
+                  //   console.log("error from pdf parser: = ", e)
+                  // }
                 >
                   {Array.from(Array(numPages).keys()).map((pageNum) => {
                     return (

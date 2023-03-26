@@ -1,5 +1,5 @@
 import { FormContext } from "@/context/FormContext";
-import { useCodeAndSlug, useFilter, useJobs } from "@/hooks";
+import { useAuth, useCodeAndSlug, useFilter, useJobs } from "@/hooks";
 import { EStep } from "@/interfaces";
 import { log } from "@/utils";
 import { Button } from "flowbite-react";
@@ -10,13 +10,15 @@ import { PersonalQuestions } from "./info/PersonalQuestions";
 import { Review } from "./Review";
 import { Stepper } from "./Stepper";
 import { UploadResume } from "./UploadResume";
+import { GetStarted } from "./GetStarted";
 
 export const Apply: FC = () => {
   const { jobs } = useJobs();
   const { status, code, slug } = useCodeAndSlug();
   const { t } = useTranslation();
   const { filters } = useFilter();
-  const { step, nextStep, stepsStatus, validateSteps, uloadedResume } =
+  const { user } = useAuth();
+  const { step, nextStep, stepsStatus, validateSteps, uloadedResume, asGuest } =
     useContext(FormContext);
 
   if (status === "fail") return null;
@@ -39,6 +41,8 @@ export const Apply: FC = () => {
     return !validateSteps(step);
   }, [uloadedResume.exists, step]);
   // const stepIsInvalid = validateSteps(step);
+
+  if (step === EStep.getStarted) return <GetStarted />;
 
   return (
     <div className="mb-28">

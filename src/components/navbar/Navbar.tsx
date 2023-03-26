@@ -39,9 +39,9 @@ export const Navbar: FC<{}> = () => {
             <LangDropdown />
           </div>
 
-          <div className="mr-3 md:mr-8">
+          {/* <div className="mr-3 md:mr-8">
             <UserDropdown />
-          </div>
+          </div> */}
           <div className="mr-3 flex md:mr-0">
             <Classic
               duration={750}

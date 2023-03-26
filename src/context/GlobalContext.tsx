@@ -26,6 +26,7 @@ const defaultValue: IGlobalContextValue = {
       scheduleTypes: [],
       remoteWorks: [],
     },
+    user: null,
   },
   setState: () => {},
 };
@@ -49,6 +50,7 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
       scheduleTypes: [],
       remoteWorks: [],
     },
+    user: null,
   });
   // const router = useRouter();
 

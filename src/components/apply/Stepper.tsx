@@ -1,5 +1,5 @@
 import { FormContext } from "@/context/FormContext";
-import { STEPS } from "@/interfaces";
+import { EStep, STEPS } from "@/interfaces";
 import { Timeline } from "flowbite-react";
 import { FC, useContext, useTransition } from "react";
 import { useTranslation } from "react-i18next";
@@ -76,7 +76,7 @@ export const Stepper = () => {
   return (
     <div className="mt-8  flex w-full justify-center">
       <ol className="flex w-full items-center text-center text-sm font-medium text-gray-500 dark:text-gray-400 sm:text-base">
-        {STEPS.map((STEP, i) => {
+        {STEPS.filter((x) => x !== EStep.getStarted).map((STEP, i) => {
           const itemProps = {
             shortTitle: mapper[STEP].shortTitle,
             fullTitle: mapper[STEP].fullTitle,

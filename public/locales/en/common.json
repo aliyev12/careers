@@ -177,6 +177,11 @@
         "phone": {
           "required": "Phone number is required but hasn't been provided",
           "invalid": "Phone number is invalid"
+        },
+        "password": {
+          "required": "Password is required but hasn't been provided",
+          "min": "Password is too short",
+          "invalid": "Password is invalid"
         }
       },
       "fields": {
@@ -191,6 +196,9 @@
         },
         "phone": {
           "label": "Phone number"
+        },
+        "password": {
+          "label": "Password"
         }
       }
     },

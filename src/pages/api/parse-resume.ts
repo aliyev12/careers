@@ -24,38 +24,39 @@ const apiRoute = nextConnect({
 apiRoute.use(multer().any());
 
 apiRoute.post((req, res) => {
+  // console.log("req.files = ", req.files); // Your files here
+  // console.log("req.body = ", req.body); // Your form data here
+
   // res.status(500).json({ oops: "ooops" });
-  res.status(200).json({ status: "success", result: sample_response });
-  /* 
-  console.log("req.files = ", req.files); // Your files here
-  console.log("req.body = ", req.body); // Your form data here
+  // // // // // // // res.status(200).json({ status: "success", result: sample_response });
+
   // Any logic with your data here
 
   // const credential = new AffindaCredential(process.env.AFFINDA_KEY);
   const credential = new AffindaCredential(
-    "9142cb0c92f5859341b0f4b02d385f3d2d0b69ca"
+    "cf68e2240029734a570081063a8df95f8f1fc81c"
   );
   const client = new AffindaAPI(credential);
   const readStream = fs.createReadStream(
-    "/Users/abdulaliyev/web-projects/careers/resumeAbdulAliyev.pdf"
+    "/Users/abdulaliyev/web-projects/careers/john_doe_resume.pdf"
   );
   // const readStream = fs.createReadStream(
   //   path.join(__dirname, "resumeAbdulAliyev.pdf")
   // );
   // const readStream = fs.createReadStream(new Uint8Array(req.files[0]));
 
-  // client
-  //   .createResume({ file: readStream })
-  //   .then((result) => {
-  //     console.log("Returned data:");
-  //     console.dir(result);
-  //     res.status(200).json({ data: "success", result });
-  //   })
-  //   .catch((err) => {
-  //     console.log("An error occurred:");
-  //     console.error(err);
-  //     res.status(500).json({ data: "error", err });
-  //   });
+  client
+    .createResume({ file: readStream })
+    .then((result) => {
+      console.log("Returned data:");
+      console.dir(result);
+      res.status(200).json({ data: "success", result });
+    })
+    .catch((err) => {
+      console.log("An error occurred:");
+      console.error(err);
+      res.status(500).json({ data: "error", err });
+    });
 
   // Can also use a URL:
 
@@ -71,8 +72,6 @@ apiRoute.post((req, res) => {
   //     console.log("An error occurred:");
   //     console.error(err);
   //   });
-
-  */
 });
 
 export default apiRoute;

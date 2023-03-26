@@ -39,19 +39,23 @@ export const getStaticProps: GetStaticProps<{ data: IJobsRes }> = async (
 export async function getStaticPaths({ locales }: { locales: string[] }) {
   const paths: string[] = [];
 
-  for (let i = 0; i < locales.length; i++) {
-    const locale = locales[i];
-    const url = `${process.env.CMS_ORIGIN}${process.env.CMS_JOBS_PATH}&locale=${locale}`;
-    const res: Response = await fetch(url);
-    const data: IJobsRes = await res.json();
+  try {
+    for (let i = 0; i < locales.length; i++) {
+      const locale = locales[i];
+      const url = `${process.env.CMS_ORIGIN}${process.env.CMS_JOBS_PATH}&locale=${locale}`;
+      const res: Response = await fetch(url);
+      const data: IJobsRes = await res.json();
 
-    for (let j = 0; j < data.data.length; j++) {
-      const job = data.data[j];
-      const newPath = `${locale === "en" ? "" : "/" + locale}/careers/apply/${
-        job.attributes.code
-      }/${job.attributes.slug}`;
-      paths.push(newPath);
+      for (let j = 0; j < data.data.length; j++) {
+        const job = data.data[j];
+        const newPath = `${locale === "en" ? "" : "/" + locale}/careers/apply/${
+          job.attributes.code
+        }/${job.attributes.slug}`;
+        paths.push(newPath);
+      }
     }
+  } catch (error) {
+    console.log(error);
   }
 
   return {

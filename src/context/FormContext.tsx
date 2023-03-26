@@ -5,29 +5,35 @@ import {
   IUploadedFile,
   STEPS,
 } from "@/interfaces";
+import { extractInfoFromParsedResume } from "@/utils/extractInfoFromParsedResume";
 import {
   createContext,
   FC,
   PropsWithChildren,
   useCallback,
+  useEffect,
   useState,
 } from "react";
 
 import sample_parse_resume_res from "./sample_parse_resume_res.json";
 
 const defaultUploadedResume = {
-  exists: true,
+  exists: false,
   path: "",
   base64: null,
 };
 
 const defaultStepsStatus = {
+  getStarted: {
+    visited: true,
+    valid: true,
+  },
   resume: {
     visited: true,
     valid: false,
   },
   info: {
-    visited: true,
+    visited: false,
     valid: false,
   },
   questions: {
@@ -44,27 +50,38 @@ const defaultValue: IFormContextValue = {
   step: EStep.resume,
   stepsStatus: { ...defaultStepsStatus },
   parsedResume: {},
+  // @ts-ignore
+  // uloadedResume: { ...sample_uploaded_resume },
   uloadedResume: { ...defaultUploadedResume },
   nextStep: () => {},
   updateParsedResume: () => {},
   validateCurrentStep: () => {},
   setUloadedResume: (n) => {},
   validateSteps: (s) => false,
+  asGuest: false,
+  setAsGuest: (s) => {},
 };
 
 export const FormContext = createContext<IFormContextValue>(defaultValue);
 
 export const FormProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [step, setStep] = useState<EStep>(EStep.info);
+  const [step, setStep] = useState<EStep>(EStep.resume);
   const [stepsStatus, setStepsStatus] = useState<IStepsStatus>({
     ...defaultStepsStatus,
   });
-  const [parsedResume, setParsedResume] = useState(
-    sample_parse_resume_res as { [k: string]: any }
-  );
+  const [parsedResume, setParsedResume] = useState<any>();
+  // const [parsedResume, setParsedResume] = useState(
+  //   sample_parse_resume_res as { [k: string]: any }
+  // );
+  // @ts-ignore
   const [uloadedResume, setUloadedResume] = useState<IUploadedFile>({
     ...defaultUploadedResume,
   });
+  const [asGuest, setAsGuest] = useState(false);
+
+  // useEffect(() => {
+  //   console.log("uloadedResume = ", JSON.stringify(uloadedResume));
+  // }, [uloadedResume]);
 
   function nextStep() {
     const stepIdx = STEPS.indexOf(step);
@@ -134,6 +151,8 @@ export const FormProvider: FC<PropsWithChildren> = ({ children }) => {
     updateParsedResume,
     validateCurrentStep,
     validateSteps,
+    asGuest,
+    setAsGuest,
   };
 
   return <FormContext.Provider value={value}>{children}</FormContext.Provider>;

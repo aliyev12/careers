@@ -7,19 +7,19 @@ export const Footer: FC<PropsWithChildren> = ({ children }) => {
   const { t } = useTranslation("common");
 
   return (
-    <footer className="container flex justify-center items-center mx-auto text-sm bg-white dark:bg-gray-800 px-5 md:px-0 py-6 h-10 text-gray-500 dark:text-gray-200">
-      <div className="w-full flex flex-col md:flex-row md:justify-between ">
-        <div className="order-2 md:order-1 mt-10 md:mt-0 mb-7 md:mb-0 text-center md:text-start">
+    <footer className="mt-12 w-full border-t border-gray-200 bg-white p-4 shadow dark:border-gray-600 dark:bg-gray-800 md:flex md:items-center md:justify-between md:p-6">
+      <div className="flex w-full flex-col md:flex-row md:justify-between ">
+        <div className="order-2 mt-10 mb-7 text-center md:order-1 md:mt-0 md:mb-0 md:text-start">
           <span>©</span> <span>{new Date().getFullYear()}</span>{" "}
           <span>Careers</span>
         </div>
-        <ul className="flex flex-col md:flex-row order-1 md:order-2 items-center space-y-5 md:space-y-0">
+        <ul className="order-1 flex flex-col items-center space-y-5 md:order-2 md:flex-row md:space-y-0">
           <li className="last:mr-0 md:mr-6">
             <Link href="/" className="hover:underline">
               {t("nav_links.home")}
             </Link>
           </li>
-          <li className="last:mr-0 md:mr-6">
+          {/* <li className="last:mr-0 md:mr-6">
             <Link href="/about" className="hover:underline">
               {t("nav_links.about")}
             </Link>
@@ -28,7 +28,7 @@ export const Footer: FC<PropsWithChildren> = ({ children }) => {
             <Link href="/contact" className="hover:underline">
               {t("nav_links.contact")}
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </footer>

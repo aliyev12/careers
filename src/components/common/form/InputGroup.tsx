@@ -1,14 +1,15 @@
+import { IFieldParameters } from "@/interfaces";
 import { Label, TextInput, TextInputColors } from "flowbite-react";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { HiExclamationCircle } from "react-icons/hi";
-import { fieldProps, TFields } from "./constants";
 
 export const InputGroup: FC<{
-  id: TFields;
+  id: string;
   name: string;
   value: string;
   form: any;
+  fieldProps: IFieldParameters;
   field: {
     name: string;
     value: string;
@@ -20,11 +21,17 @@ export const InputGroup: FC<{
     name,
     id,
     value,
-    form: { touched, errors },
+    fieldProps,
+    form: { touched, errors, validateForm, setFieldValue },
     ..._props
   } = props;
 
-  const { t } = useTranslation("common");
+  useEffect(() => {
+    if (field.value !== "") {
+      setFieldValue(name, field.value, true);
+      validateForm();
+    }
+  }, []);
 
   const colors: TextInputColors = {
     failure: "failure",
@@ -48,7 +55,7 @@ export const InputGroup: FC<{
     additionalProps.color = colors.failure;
   }
 
-  const { label, required, type, placeholder } = fieldProps(t)[id];
+  const { label, required, type, placeholder } = fieldProps;
 
   return (
     <div>
@@ -69,33 +76,3 @@ export const InputGroup: FC<{
     </div>
   );
 };
-
-// export const InputGroup: FC<{
-//   type: "text" | "email";
-//   label: string;
-//   id: string;
-//   placeholder?: string;
-//   isRequired: boolean;
-//   value: string;
-// }> = ({ type, label, id, placeholder, isRequired = false, value }) => {
-//   function getInputType() {
-//     if (type === "text" || type === "email") {
-//       return type;
-//     }
-//   }
-//   return (
-//     <div>
-//       <div className="mb-2 block">
-//         <Label htmlFor={id} value={label} />
-//       </div>
-//       {type === "text" && (
-//         <TextInput
-//           id={id}
-//           type={getInputType()}
-//           placeholder={placeholder ? placeholder : ""}
-//           required={isRequired}
-//         />
-//       )}
-//     </div>
-//   );
-// };

@@ -12,6 +12,14 @@ export interface IFilters {
   [filter: string]: string[] | string;
 }
 
+export interface IUser {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+}
+
 export interface IGlobalContextState {
   jobsState: {
     isNotInitializes: boolean;
@@ -19,6 +27,7 @@ export interface IGlobalContextState {
     filteredJobs: IJob[];
   };
   filters: IFilters;
+  user: IUser | null;
 }
 
 export interface IGlobalContextValue {
@@ -28,6 +37,7 @@ export interface IGlobalContextValue {
 
 //* FORM CONTEXT  */
 export enum EStep {
+  getStarted = "getStarted",
   resume = "resume",
   info = "info",
   questions = "questions",
@@ -35,6 +45,7 @@ export enum EStep {
 }
 
 export const STEPS: EStep[] = [
+  EStep.getStarted,
   EStep.resume,
   EStep.info,
   EStep.questions,
@@ -47,6 +58,7 @@ export interface IStepStatus {
 }
 
 export interface IStepsStatus {
+  getStarted: IStepStatus;
   resume: IStepStatus;
   info: IStepStatus;
   questions: IStepStatus;
@@ -69,4 +81,6 @@ export interface IFormContextValue {
   uloadedResume: IUploadedFile;
   setUloadedResume: Dispatch<SetStateAction<IUploadedFile>>;
   validateSteps: (s: string) => boolean;
+  asGuest: boolean;
+  setAsGuest: Dispatch<SetStateAction<boolean>>;
 }
